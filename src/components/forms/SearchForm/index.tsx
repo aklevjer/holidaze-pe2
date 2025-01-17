@@ -42,7 +42,7 @@ export default function SearchForm({ className, onSearch }: SearchFormProps) {
       <button
         type="submit"
         aria-label="Search"
-        className="rounded-r-md border border-white bg-teal-700 px-4 text-neutral-100 md:border-none"
+        className="rounded-r-md border border-white bg-teal-700 px-4 text-neutral-100 transition-colors hover:bg-teal-900 md:border-none"
       >
         <BiSearch size={18} />
       </button>
