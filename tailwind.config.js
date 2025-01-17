@@ -64,6 +64,9 @@ export default {
       gridTemplateRows: {
         layout: "auto 1fr auto",
       },
+      boxShadow: {
+        elevated: "0px 10px 30px 0px rgba(153, 153, 153, 0.3)",
+      },
     },
   },
   plugins: [
