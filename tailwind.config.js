@@ -75,6 +75,9 @@ export default {
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
+        ".overflow-wrap-anywhere": {
+          overflowWrap: "anywhere",
+        },
         ".word-spacing-tight": {
           wordSpacing: "-0.1rem",
         },
