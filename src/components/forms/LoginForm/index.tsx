@@ -9,9 +9,10 @@ import Button from "@/components/ui/Button";
 
 interface LoginFormProps {
   onSubmit: (loginData: LoginFormData) => void;
+  isPending: boolean;
 }
 
-export default function LoginForm({ onSubmit }: LoginFormProps) {
+export default function LoginForm({ onSubmit, isPending }: LoginFormProps) {
   const {
     register,
     handleSubmit,
@@ -39,7 +40,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
         error={errors.password}
       />
 
-      <Button variant="primary" type="submit" className="w-full">
+      <Button variant="primary" type="submit" isLoading={isPending} className="w-full">
         Login
       </Button>
 
