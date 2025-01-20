@@ -11,9 +11,10 @@ import Button from "@/components/ui/Button";
 
 interface RegisterFormProps {
   onSubmit: (registerData: RegisterFormData) => void;
+  isPending: boolean;
 }
 
-export default function RegisterForm({ onSubmit }: RegisterFormProps) {
+export default function RegisterForm({ onSubmit, isPending }: RegisterFormProps) {
   const {
     register,
     handleSubmit,
@@ -63,7 +64,7 @@ export default function RegisterForm({ onSubmit }: RegisterFormProps) {
         />
       </div>
 
-      <Button variant="primary" type="submit" className="w-full">
+      <Button variant="primary" type="submit" isLoading={isPending} className="w-full">
         Register
       </Button>
 
