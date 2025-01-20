@@ -1,4 +1,5 @@
 import { Media } from "@/types/media";
+import { ApiResponse } from "@/types/api";
 
 export interface User {
   name: string;
@@ -9,3 +10,5 @@ export interface User {
   venueManager?: boolean;
   accessToken?: string;
 }
+
+export type AuthResponse = ApiResponse<User>;
