@@ -6,7 +6,7 @@ import { User } from "@/types/auth";
 import { DEFAULT_AVATAR_IMG } from "@/constants/images";
 
 export default function UserDropdown({ user }: { user: User }) {
-  const { logout } = useAuthStore();
+  const logout = useAuthStore((state) => state.logout);
   const { name, avatar, venueManager } = user;
 
   return (
