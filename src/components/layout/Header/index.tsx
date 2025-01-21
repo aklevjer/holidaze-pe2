@@ -1,13 +1,17 @@
 import { useState } from "react";
+import { useAuthStore } from "@/store/authStore";
+
 import Logo from "@/components/ui/Logo";
 import NavLink from "@/components/ui/NavLink";
 import SearchForm from "@/components/forms/SearchForm";
 import Navbar from "@/components/layout/Header/Navbar";
 import MenuButton from "@/components/layout/Header/MenuButton";
+import UserDropdown from "@/components/layout/Header/UserDropdown";
 import MobileMenu from "@/components/layout/Header/MobileMenu";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
 
   const openMenu = () => setMenuOpen(true);
   const closeMenu = () => setMenuOpen(false);
@@ -21,11 +25,18 @@ export default function Header() {
         </div>
 
         <SearchForm className="hidden w-full max-w-xs md:flex" />
-        <NavLink asDark to="/login" className="md:hidden">
-          Login
-        </NavLink>
+
+        <div className="md:hidden">
+          {user ? (
+            <UserDropdown user={user} />
+          ) : (
+            <NavLink asDark to="/login">
+              Login
+            </NavLink>
+          )}
+        </div>
       </div>
-      <Navbar />
+      <Navbar user={user} />
       <MobileMenu menuOpen={menuOpen} closeMenu={closeMenu} />
     </header>
   );
