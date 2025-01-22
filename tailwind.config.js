@@ -70,6 +70,9 @@ export default {
       gridTemplateColumns: {
         "autofill-220": "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
       },
+      backgroundImage: {
+        hero: "url('/images/hero-bg.jpg')",
+      },
       aspectRatio: {
         "4/3": "4 / 3",
         "3/2": "3 / 2",

@@ -5,7 +5,7 @@ export default function Hero() {
   const { user } = useAuthStore();
 
   return (
-    <section className="grid min-h-[350px] place-items-center bg-black bg-[url('/images/hero-bg.jpg')] bg-cover">
+    <section className="grid min-h-[350px] place-items-center bg-black bg-hero bg-cover">
       <div className="container py-8 text-center text-neutral-100">
         <h1 className="mb-2 text-3xl font-semibold capitalize leading-tight">
           Your next stay, made simple.
