@@ -65,6 +65,14 @@ export default {
       },
       gridTemplateRows: {
         layout: "auto 1fr auto",
+        card: "auto 1fr",
+      },
+      gridTemplateColumns: {
+        "autofill-220": "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+      },
+      aspectRatio: {
+        "4/3": "4 / 3",
+        "3/2": "3 / 2",
       },
       maxWidth: {
         prose: "50ch",
