@@ -7,7 +7,7 @@ interface TextInputProps {
   type: "text" | "email" | "number";
   label: string;
   placeholder: string;
-  register?: UseFormRegisterReturn;
+  register: UseFormRegisterReturn;
   error?: { message?: string };
 }
 

@@ -6,7 +6,7 @@ interface TextareaProps {
   id: string;
   label: string;
   placeholder: string;
-  register?: UseFormRegisterReturn;
+  register: UseFormRegisterReturn;
   error?: { message?: string };
 }
 
