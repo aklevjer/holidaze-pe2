@@ -16,7 +16,7 @@ export default function ContactForm() {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = (contactData: ContactFormData) => {
+  const handleContact = (contactData: ContactFormData) => {
     console.log("Contact form data:", contactData);
     reset();
   };
@@ -29,7 +29,7 @@ export default function ContactForm() {
         happy to help.
       </p>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(handleContact)} className="space-y-4">
         <TextInput
           id="name"
           type="text"
