@@ -29,8 +29,8 @@ export default function VenueCard({ venue }: { venue: Venue }) {
 
             {(location.city || location.country) && (
               <div className="flex items-center gap-1">
-                <BiMap size={16} />
-                <span>
+                <BiMap size={16} className="flex-shrink-0" />
+                <span className="line-clamp-2">
                   {location.city && location.country
                     ? `${location.city}, ${location.country}`
                     : location.city || location.country}
@@ -41,12 +41,12 @@ export default function VenueCard({ venue }: { venue: Venue }) {
 
           <div className="flex flex-wrap justify-between gap-2">
             <div className="flex items-center gap-1">
-              <BiSolidUser size={16} />
+              <BiSolidUser size={16} className="flex-shrink-0" />
               <span>{maxGuests} Guests</span>
             </div>
 
             <div className="flex items-center gap-1">
-              <BiSolidStar size={16} />
+              <BiSolidStar size={16} className="flex-shrink-0" />
               <span>{rating === 0 ? rating : rating.toFixed(1)}</span>
             </div>
           </div>
