@@ -3,8 +3,14 @@ import { BiMap, BiSolidUser, BiSolidStar } from "react-icons/bi";
 import { Venue } from "@/types/venue";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
-export default function VenueCard({ venue }: { venue: Venue }) {
+interface VenueCardProps {
+  venue: Venue;
+  useH2?: boolean;
+}
+
+export default function VenueCard({ venue, useH2 }: VenueCardProps) {
   const { id, name, media, price, location, maxGuests, rating } = venue;
+  const HeadingTag = useH2 ? "h2" : "h3";
 
   return (
     <li className="group grid rounded-md border border-neutral-300 shadow-elevated">
@@ -23,9 +29,9 @@ export default function VenueCard({ venue }: { venue: Venue }) {
 
         <div className="flex flex-col justify-between gap-4 p-4 text-sm">
           <div>
-            <h3 className="mb-1 line-clamp-2 text-base font-semibold group-hover:underline">
+            <HeadingTag className="mb-1 line-clamp-2 text-base font-semibold group-hover:underline">
               {name}
-            </h3>
+            </HeadingTag>
 
             {(location.city || location.country) && (
               <div className="flex items-center gap-1">
