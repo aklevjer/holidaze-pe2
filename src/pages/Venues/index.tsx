@@ -44,6 +44,7 @@ export default function Venues() {
     if (query) {
       setQueryParam(query);
       setSearchQuery(query);
+      setCurrentPage(1);
     }
   }, [searchParams]);
 
