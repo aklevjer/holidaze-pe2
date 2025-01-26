@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 interface CheckboxProps {
   id: string;
   label: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 }
 
 export default function Checkbox({ id, label, register }: CheckboxProps) {

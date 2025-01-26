@@ -44,3 +44,4 @@ export interface Venue {
 }
 
 export type VenuesResponse = ApiResponse<Venue[]>;
+export type VenueResponse = ApiResponse<Venue>;
