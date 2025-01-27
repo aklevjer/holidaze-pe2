@@ -23,10 +23,26 @@ export const venueSchema = z.object({
     pets: z.boolean(),
   }),
   location: z.object({
-    address: z.string().transform((val) => (val === "" ? null : val)),
-    zip: z.string().transform((val) => (val === "" ? null : val)),
-    city: z.string().transform((val) => (val === "" ? null : val)),
-    country: z.string().transform((val) => (val === "" ? null : val)),
+    address: z
+      .string()
+      .nullable()
+      .optional()
+      .transform((val) => (val === "" ? null : val)),
+    zip: z
+      .string()
+      .nullable()
+      .optional()
+      .transform((val) => (val === "" ? null : val)),
+    city: z
+      .string()
+      .nullable()
+      .optional()
+      .transform((val) => (val === "" ? null : val)),
+    country: z
+      .string()
+      .nullable()
+      .optional()
+      .transform((val) => (val === "" ? null : val)),
     continent: z.string().nullable().optional(),
     lat: z.number().min(-90).max(90).nullable().optional(),
     lng: z.number().min(-180).max(180).nullable().optional(),

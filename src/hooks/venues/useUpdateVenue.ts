@@ -4,17 +4,17 @@ import { apiRequest } from "@/api/request";
 import { VenueResponse } from "@/types/venue";
 import { VenueFormData } from "@/schemas/venueSchema";
 
-export const useCreateVenue = () => {
+export const useUpdateVenue = (venueId: string) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
   const { mutate, isPending, error } = useMutation<VenueResponse, Error, VenueFormData>({
-    mutationFn: (venueData) => apiRequest("/holidaze/venues", "POST", venueData),
-    onSuccess: ({ data: venue }) => {
-      queryClient.invalidateQueries({ queryKey: ["venues"] });
-      navigate(`/venue/${venue.id}`);
+    mutationFn: (venueData) => apiRequest(`/holidaze/venues/${venueId}`, "PUT", venueData),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["venue", venueId] });
+      navigate(`/venue/${venueId}`);
     },
   });
 
-  return { createVenue: mutate, isPending, error };
+  return { updateVenue: mutate, isPending, error };
 };
