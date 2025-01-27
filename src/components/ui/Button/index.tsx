@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { BiLoaderAlt } from "react-icons/bi";
 
 interface ButtonProps {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "danger";
   children: React.ReactNode;
   type?: "button" | "submit";
   path?: string;
@@ -27,6 +27,7 @@ export default function Button({
   const variants = {
     primary: "bg-teal-700 hover:bg-teal-900",
     secondary: "bg-slate-500 hover:bg-slate-700",
+    danger: "bg-red-700 hover:bg-red-800",
   };
 
   const classes = twMerge(base, variants[variant], className);
