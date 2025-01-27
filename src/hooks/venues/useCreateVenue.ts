@@ -8,7 +8,7 @@ export const useCreateVenue = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  const { mutate, isPending, isError } = useMutation<VenueResponse, Error, VenueFormData>({
+  const { mutate, isPending, error } = useMutation<VenueResponse, Error, VenueFormData>({
     mutationFn: (venueData) => apiRequest("/holidaze/venues", "POST", venueData),
     onSuccess: ({ data: venue }) => {
       queryClient.invalidateQueries({ queryKey: ["venues"] });
@@ -16,5 +16,5 @@ export const useCreateVenue = () => {
     },
   });
 
-  return { createVenue: mutate, isPending, isError };
+  return { createVenue: mutate, isPending, error };
 };

@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { twMerge } from "tailwind-merge";
 import { BiTrash } from "react-icons/bi";
+
+import { Venue } from "@/types/venue";
 import { VenueFormData, venueSchema } from "@/schemas/venueSchema";
 import { isImgUrlValid } from "@/utils/validation";
 
@@ -15,10 +18,12 @@ import Alert from "@/components/ui/Alert";
 interface VenueFormProps {
   onSubmit: (venueData: VenueFormData) => void;
   isPending: boolean;
-  isError: boolean;
+  error: Error | null;
+  venue?: Venue;
+  onDelete?: () => void;
 }
 
-export default function VenueForm({ onSubmit, isPending, isError }: VenueFormProps) {
+export default function VenueForm({ onSubmit, isPending, error, venue, onDelete }: VenueFormProps) {
   const [imageUrl, setImageUrl] = useState("");
   const [imageUrlError, setImageUrlError] = useState("");
   const {
@@ -28,6 +33,7 @@ export default function VenueForm({ onSubmit, isPending, isError }: VenueFormPro
     formState: { errors },
   } = useForm<VenueFormData>({
     resolver: zodResolver(venueSchema),
+    defaultValues: venue || {},
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -219,13 +225,24 @@ export default function VenueForm({ onSubmit, isPending, isError }: VenueFormPro
         )}
       </fieldset>
 
-      {isError && (
-        <Alert type="error" message="Oops! Failed to add venue. Please try again later." />
-      )}
+      {error && <Alert type="error" message={error.message} />}
 
-      <Button variant="primary" type="submit" isLoading={isPending} className="w-full">
-        Add venue
-      </Button>
+      <div className="flex flex-col gap-4 sm:flex-row">
+        <Button
+          variant="primary"
+          type="submit"
+          isLoading={isPending}
+          className={twMerge(!venue && "w-full")}
+        >
+          {venue ? "Update venue" : "Add venue"}
+        </Button>
+
+        {venue && (
+          <Button variant="danger" type="button" onClick={onDelete}>
+            Delete venue
+          </Button>
+        )}
+      </div>
     </form>
   );
 }
