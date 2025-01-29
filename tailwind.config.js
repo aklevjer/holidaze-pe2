@@ -88,14 +88,21 @@ export default {
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
-        ".overflow-wrap-anywhere": {
-          overflowWrap: "anywhere",
+        ".word-spacing-normal": {
+          wordSpacing: "normal",
         },
         ".word-spacing-tight": {
           wordSpacing: "-0.1rem",
         },
-        ".word-spacing-normal": {
-          wordSpacing: "normal",
+        ".overflow-wrap-anywhere": {
+          overflowWrap: "anywhere",
+        },
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".no-scrollbar": {
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
         },
       });
     },
