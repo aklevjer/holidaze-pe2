@@ -68,7 +68,7 @@ export default {
         card: "auto 1fr",
       },
       gridTemplateColumns: {
-        "autofill-220": "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+        list: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
       },
       backgroundImage: {
         hero: "url('/images/hero-bg.jpg')",

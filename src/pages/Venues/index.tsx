@@ -69,7 +69,7 @@ export default function Venues() {
       )}
 
       {venues.length > 0 && (
-        <ul className="grid grid-cols-autofill-220 gap-x-6 gap-y-8 overflow-wrap-anywhere">
+        <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere">
           {venues.map((venue) => (
             <VenueCard key={venue.id} venue={venue} useH2 />
           ))}
