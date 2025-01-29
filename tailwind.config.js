@@ -74,8 +74,9 @@ export default {
         hero: "url('/images/hero-bg.jpg')",
       },
       aspectRatio: {
-        "4/3": "4 / 3",
         "3/2": "3 / 2",
+        "4/3": "4 / 3",
+        "5/2": "5 / 2",
       },
       maxWidth: {
         prose: "50ch",
