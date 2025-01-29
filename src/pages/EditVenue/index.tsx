@@ -8,8 +8,8 @@ import VenueForm from "@/components/forms/VenueForm";
 
 export default function EditVenue() {
   const { id } = useParams();
-  const { venue, isLoading, isError } = useVenueById(id || "");
-  const { updateVenue, isPending, error } = useUpdateVenue(id || "");
+  const { venue, isLoading, isError } = useVenueById(String(id));
+  const { updateVenue, isPending, error } = useUpdateVenue(String(id));
 
   const handleEditVenue = (venueData: VenueFormData) => {
     updateVenue(venueData);
