@@ -70,6 +70,7 @@ export default {
       },
       gridTemplateColumns: {
         list: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+        venue: "minmax(auto, 525px) 350px",
       },
       backgroundImage: {
         hero: "url('/images/hero-bg.jpg')",
