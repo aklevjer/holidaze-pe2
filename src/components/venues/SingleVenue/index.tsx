@@ -5,9 +5,10 @@ import Gallery from "@/components/venues/Gallery";
 import Rating from "@/components/venues/Rating";
 import Amenities from "@/components/venues/Amenities";
 import Owner from "@/components/venues/Owner";
+import Map from "@/components/venues/Map";
 
 export default function SingleVenue({ venue }: { venue: Venue }) {
-  const { name, description, media, price, rating, meta, owner } = venue;
+  const { name, description, media, price, rating, meta, location, owner } = venue;
 
   return (
     <>
@@ -26,13 +27,16 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
           <div>
             <h1 className="mb-2 text-3xl font-semibold leading-tight">{name}</h1>
             <Rating rating={rating} />
+
             <p className="mb-4">
               <span className="text-lg font-semibold">${price}</span> /Night
             </p>
+
             <p>{description}</p>
           </div>
 
           <Amenities amenities={meta} />
+          <Map location={location} />
         </div>
 
         <div className="space-y-6">{owner && <Owner owner={owner} />}</div>
