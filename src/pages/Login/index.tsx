@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <section className="container grid h-full place-items-center pb-20 pt-12">
       <div className="w-full max-w-md rounded-md border border-neutral-300 px-4 py-8 shadow-elevated sm:px-12">
-        <h1 className="mb-2 text-2xl font-semibold capitalize">Login</h1>
+        <h1 className="mb-2 text-3xl font-semibold capitalize">Login</h1>
 
         {error ? (
           <Alert type="error" message={error.message} className="mb-4" />

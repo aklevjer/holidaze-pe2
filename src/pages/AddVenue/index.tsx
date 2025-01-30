@@ -11,7 +11,7 @@ export default function AddVenue() {
 
   return (
     <section className="container mb-20 mt-12 max-w-2xl space-y-4">
-      <h1 className="text-2xl font-semibold capitalize">Add venue</h1>
+      <h1 className="text-3xl font-semibold capitalize">Add venue</h1>
       <VenueForm onSubmit={handleAddVenue} isPending={isPending} error={error} />
     </section>
   );
