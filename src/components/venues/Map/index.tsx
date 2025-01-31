@@ -3,7 +3,6 @@ import { BiMap } from "react-icons/bi";
 import { useVenueLocation } from "@/hooks/venues/useVenueLocation";
 import { VenueLocation } from "@/types/venue";
 import Alert from "@/components/ui/Alert";
-import "leaflet/dist/leaflet.css";
 
 export default function Map({ location }: { location: VenueLocation }) {
   const { city, country, lat, lng } = location;
