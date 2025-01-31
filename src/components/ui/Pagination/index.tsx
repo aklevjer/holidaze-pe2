@@ -1,7 +1,7 @@
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 import { ApiResponseMeta } from "@/types/api";
-import { getPaginationRange } from "@/utils/pagination";
+import { getPaginationRange } from "@/utils/common/pagination";
 
 interface PaginationProps {
   meta: ApiResponseMeta;

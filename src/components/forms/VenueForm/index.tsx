@@ -6,7 +6,7 @@ import { BiTrash } from "react-icons/bi";
 
 import { Venue } from "@/types/venue";
 import { VenueFormData, venueSchema } from "@/schemas/venueSchema";
-import { isImgUrlValid } from "@/utils/validation";
+import { isImgUrlValid } from "@/utils/common/validation";
 
 import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";

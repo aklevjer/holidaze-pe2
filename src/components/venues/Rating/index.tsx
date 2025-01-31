@@ -1,5 +1,5 @@
 import { BiStar, BiSolidStar, BiSolidStarHalf } from "react-icons/bi";
-import { getRatingStars } from "@/utils/rating";
+import { getRatingStars } from "@/utils/common/rating";
 
 export default function Rating({ rating }: { rating: number }) {
   const stars = getRatingStars(rating);
