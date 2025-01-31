@@ -22,7 +22,7 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
         />
       )}
 
-      <div className="grid gap-10 px-4 md:grid-cols-venue md:justify-between md:px-0">
+      <div className="grid gap-10 px-4 overflow-wrap-anywhere md:grid-cols-venue md:justify-between md:px-0">
         <div className="space-y-10">
           <div>
             <h1 className="mb-2 text-3xl font-semibold leading-tight">{name}</h1>
