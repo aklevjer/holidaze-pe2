@@ -22,7 +22,7 @@ export default function Owner({ owner }: { owner: VenueOwner }) {
             </span>
           </div>
 
-          <span className="block text-sm font-medium capitalize text-slate-500 group-hover:text-teal-900">
+          <span className="block text-sm font-medium capitalize text-slate-500 transition-colors group-hover:text-teal-900">
             View profile
           </span>
         </div>
