@@ -60,8 +60,9 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
             venueId={id}
             isPending={isPending}
             error={error}
-            maxGuests={maxGuests}
             bookings={bookings || []}
+            price={price}
+            maxGuests={maxGuests}
           />
         </div>
       </div>

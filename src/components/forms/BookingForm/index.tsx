@@ -9,6 +9,7 @@ import { formatDateToUTC } from "@/utils/bookings/formatDate";
 import Alert from "@/components/ui/Alert";
 import Calendar from "@/components/bookings/Calendar";
 import GuestSelector from "@/components/bookings/GuestSelector";
+import PriceSummary from "@/components/bookings/PriceSummary";
 import Button from "@/components/ui/Button";
 
 interface BookingFormProps {
@@ -17,6 +18,7 @@ interface BookingFormProps {
   isPending: boolean;
   error: Error | null;
   bookings: Booking[];
+  price: number;
   maxGuests: number;
 }
 
@@ -26,6 +28,7 @@ export default function BookingForm({
   isPending,
   error,
   bookings,
+  price,
   maxGuests,
 }: BookingFormProps) {
   const user = useAuthStore((state) => state.user);
@@ -79,6 +82,7 @@ export default function BookingForm({
       />
 
       <GuestSelector maxGuests={maxGuests} register={register("guests")} />
+      <PriceSummary price={price} dates={dates} />
 
       {user ? (
         <Button variant="primary" type="submit" isLoading={isPending} className="w-full">
