@@ -1,4 +1,6 @@
+import { useCreateBooking } from "@/hooks/bookings/useCreateBooking";
 import { Venue } from "@/types/venue";
+import { BookingFormData } from "@/schemas/bookingSchema";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
 import Gallery from "@/components/venues/Gallery";
@@ -6,9 +8,21 @@ import Rating from "@/components/venues/Rating";
 import Amenities from "@/components/venues/Amenities";
 import Owner from "@/components/venues/Owner";
 import Map from "@/components/venues/Map";
+import BookingForm from "@/components/forms/BookingForm";
 
 export default function SingleVenue({ venue }: { venue: Venue }) {
-  const { name, description, media, price, rating, meta, location, owner } = venue;
+  const { id, name, description, media, price, maxGuests } = venue;
+  const { rating, meta, location, owner, bookings } = venue;
+
+  const { createBooking, isPending, error } = useCreateBooking();
+
+  const handleAddBooking = (bookingData: BookingFormData, resetCallback: () => void) => {
+    createBooking(bookingData, {
+      onSuccess: () => {
+        resetCallback();
+      },
+    });
+  };
 
   return (
     <>
@@ -39,7 +53,17 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
           <Map location={location} />
         </div>
 
-        <div className="space-y-6">{owner && <Owner owner={owner} />}</div>
+        <div className="space-y-6">
+          {owner && <Owner owner={owner} />}
+          <BookingForm
+            onSubmit={handleAddBooking}
+            venueId={id}
+            isPending={isPending}
+            error={error}
+            maxGuests={maxGuests}
+            bookings={bookings || []}
+          />
+        </div>
       </div>
     </>
   );
