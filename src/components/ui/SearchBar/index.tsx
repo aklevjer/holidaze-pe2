@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { debounce } from "@/utils/debounce";
+import { debounce } from "@/utils/common/debounce";
 
 interface SearchBarProps {
   queryParam: string;

@@ -50,7 +50,7 @@ export default function Venues() {
 
   return (
     <section className="container mb-20 mt-12">
-      <h1 className="mb-6 text-2xl font-semibold capitalize">Venues</h1>
+      <h1 className="mb-6 text-3xl font-semibold capitalize">Venues</h1>
 
       <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row">
         <SearchBar queryParam={queryParam} onSearch={handleSearch} />
@@ -69,7 +69,7 @@ export default function Venues() {
       )}
 
       {venues.length > 0 && (
-        <ul className="grid grid-cols-autofill-220 gap-x-6 gap-y-8 overflow-wrap-anywhere">
+        <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere">
           {venues.map((venue) => (
             <VenueCard key={venue.id} venue={venue} useH2 />
           ))}

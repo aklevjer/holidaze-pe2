@@ -4,7 +4,7 @@ import { SOCIAL_LINKS } from "@/constants/links";
 export default function ContactDetails() {
   return (
     <section>
-      <h2 className="mb-2 text-xl font-semibold capitalize">Get in touch</h2>
+      <h2 className="mb-2 text-2xl font-semibold capitalize">Get in touch</h2>
       <p className="mb-8">
         Need assistance with a booking, listing a venue, or other inquiries? Get in touch with us
         through any of the options below.

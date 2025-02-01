@@ -23,7 +23,7 @@ export default function ContactForm() {
 
   return (
     <section className="rounded-md border border-neutral-300 p-6 shadow-elevated md:p-8">
-      <h2 className="mb-2 text-xl font-semibold capitalize">Reach out</h2>
+      <h2 className="mb-2 text-2xl font-semibold capitalize">Reach out</h2>
       <p className="mb-4">
         Have a question or feedback for us? Let us know by filling out the form below and we’ll be
         happy to help.

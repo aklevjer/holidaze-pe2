@@ -1,5 +1,6 @@
 import { Media } from "@/types/media";
 import { Venue } from "@/types/venue";
+import { ApiResponse } from "@/types/api";
 
 export interface BookingCustomer {
   name: string;
@@ -19,3 +20,5 @@ export interface Booking {
   venue?: Venue;
   customer?: BookingCustomer;
 }
+
+export type BookingResponse = ApiResponse<Booking>;

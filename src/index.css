@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
+@import "react-datepicker/dist/react-datepicker.css";
+@import "leaflet/dist/leaflet.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global Layout Styles */
 
 body {
   @apply text-teal-900 word-spacing-tight;
@@ -10,4 +14,33 @@ body {
 
 #root {
   @apply grid min-h-screen grid-rows-layout;
+}
+
+/* React Datepicker Overrides */
+
+.react-datepicker {
+  @apply border-none font-sans shadow-elevated ring-1 ring-neutral-300;
+}
+
+.react-datepicker__current-month {
+  @apply font-medium;
+}
+
+.react-datepicker__header,
+.react-datepicker__header *,
+.react-datepicker__close-icon::after,
+.react-datepicker__day--in-range,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker .react-datepicker__day--in-selecting-range {
+  @apply bg-teal-700 text-neutral-100;
+}
+
+.react-datepicker__day--keyboard-selected:not([aria-disabled="true"]):hover,
+.react-datepicker__day--in-selecting-range:not([aria-disabled="true"]):hover,
+.react-datepicker__day--in-range:not([aria-disabled="true"]):hover {
+  @apply bg-teal-900;
+}
+
+.react-datepicker-popper[data-placement] .react-datepicker__triangle {
+  @apply fill-teal-700 stroke-teal-700 text-teal-700;
 }

@@ -8,8 +8,8 @@ import VenueForm from "@/components/forms/VenueForm";
 
 export default function EditVenue() {
   const { id } = useParams();
-  const { venue, isLoading, isError } = useVenueById(id || "");
-  const { updateVenue, isPending, error } = useUpdateVenue(id || "");
+  const { venue, isLoading, isError } = useVenueById(String(id));
+  const { updateVenue, isPending, error } = useUpdateVenue(String(id));
 
   const handleEditVenue = (venueData: VenueFormData) => {
     updateVenue(venueData);
@@ -23,7 +23,7 @@ export default function EditVenue() {
 
   return (
     <section className="container mb-20 mt-12 max-w-2xl space-y-4">
-      <h1 className="text-2xl font-semibold capitalize">Edit venue</h1>
+      <h1 className="text-3xl font-semibold capitalize">Edit venue</h1>
 
       {isError && (
         <Alert type="error" message="Oops! Failed to load venue. Please try again later." />

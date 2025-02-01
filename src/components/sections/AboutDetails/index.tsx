@@ -9,7 +9,7 @@ export default function AboutDetails() {
         />
 
         <div className="justify-self-end md:max-w-prose">
-          <h2 className="mb-4 text-xl font-semibold capitalize">Our mission</h2>
+          <h2 className="mb-4 text-2xl font-semibold capitalize">Our mission</h2>
           <p className="mb-8">
             At Holidaze, we believe every trip should be unforgettable. Whether you're planning a
             lakeside retreat, a mountain adventure, or a cozy city escape, we connect travelers with
@@ -32,7 +32,7 @@ export default function AboutDetails() {
         />
 
         <div className="md:max-w-prose">
-          <h2 className="mb-4 text-xl font-semibold capitalize">Why us</h2>
+          <h2 className="mb-4 text-2xl font-semibold capitalize">Why us</h2>
           <p className="mb-8">
             Choosing the right platform to book your next stay or list your venue is key. At
             Holidaze, we prioritize simplicity, trust, and unique experiences, guaranteeing a

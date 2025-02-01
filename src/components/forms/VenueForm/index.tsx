@@ -6,7 +6,7 @@ import { BiTrash } from "react-icons/bi";
 
 import { Venue } from "@/types/venue";
 import { VenueFormData, venueSchema } from "@/schemas/venueSchema";
-import { isImgUrlValid } from "@/utils/validation";
+import { isImgUrlValid } from "@/utils/common/validation";
 
 import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";
@@ -61,7 +61,7 @@ export default function VenueForm({ onSubmit, isPending, error, venue, onDelete 
       className="space-y-8 rounded-md border border-neutral-300 px-4 py-8 shadow-elevated sm:px-8"
     >
       <fieldset className="space-y-4">
-        <legend className="text-lg font-semibold">Details</legend>
+        <legend className="text-xl font-semibold">Details</legend>
 
         <TextInput
           id="name"
@@ -129,7 +129,7 @@ export default function VenueForm({ onSubmit, isPending, error, venue, onDelete 
       </fieldset>
 
       <fieldset className="space-y-4">
-        <legend className="text-lg font-semibold">Location</legend>
+        <legend className="text-xl font-semibold">Location</legend>
 
         <TextInput
           id="address"
@@ -169,7 +169,7 @@ export default function VenueForm({ onSubmit, isPending, error, venue, onDelete 
       <fieldset className="space-y-6">
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <legend className="text-lg font-semibold">Images</legend>
+            <legend className="text-xl font-semibold">Images</legend>
             <Tooltip text="Paste an image URL and click 'Add' to include it. The first image becomes the main one." />
           </div>
 

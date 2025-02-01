@@ -48,13 +48,14 @@ export default {
         sans: ["Work Sans", ...fontFamily.sans],
       },
       fontSize: {
-        sm: "0.875rem;",
+        sm: "0.875rem",
         m: "0.9375rem",
         base: "1rem",
-        lg: "1.25rem",
-        xl: "1.5rem",
-        "2xl": "1.75rem",
-        "3xl": "2.25rem",
+        lg: "1.125rem",
+        xl: "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.75rem",
+        "4xl": "2.25rem",
       },
       container: {
         center: true,
@@ -68,14 +69,15 @@ export default {
         card: "auto 1fr",
       },
       gridTemplateColumns: {
-        "autofill-220": "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+        list: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+        venue: "minmax(auto, 525px) 350px",
       },
       backgroundImage: {
         hero: "url('/images/hero-bg.jpg')",
       },
       aspectRatio: {
-        "4/3": "4 / 3",
         "3/2": "3 / 2",
+        "5/2": "5 / 2",
       },
       maxWidth: {
         prose: "50ch",
@@ -88,14 +90,21 @@ export default {
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
-        ".overflow-wrap-anywhere": {
-          overflowWrap: "anywhere",
+        ".word-spacing-normal": {
+          wordSpacing: "normal",
         },
         ".word-spacing-tight": {
           wordSpacing: "-0.1rem",
         },
-        ".word-spacing-normal": {
-          wordSpacing: "normal",
+        ".overflow-wrap-anywhere": {
+          overflowWrap: "anywhere",
+        },
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".no-scrollbar": {
+          msOverflowStyle: "none",
+          scrollbarWidth: "none",
         },
       });
     },

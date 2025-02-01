@@ -23,7 +23,7 @@ export default function NewsletterForm() {
   return (
     <section className="container mb-20">
       <div className="grid place-items-center gap-4 rounded-md border border-neutral-300 bg-neutral-50 px-4 py-10">
-        <h2 className="max-w-md text-center text-xl font-semibold leading-tight">
+        <h2 className="max-w-md text-center text-2xl font-semibold leading-tight">
           Stay up-to-date with exclusive offers, new venues, and more!
         </h2>
 
