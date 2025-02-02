@@ -29,6 +29,7 @@ const router = createBrowserRouter([
         element: <ProtectedRoutes />,
         children: [
           { path: "/profile", element: <Profile /> },
+          { path: "/profile/:name", element: <Profile /> },
           { path: "/venue/add", element: <AddVenue /> },
           { path: "/venue/:id/edit", element: <EditVenue /> },
         ],
