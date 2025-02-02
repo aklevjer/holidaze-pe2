@@ -2,7 +2,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { BiChevronDown, BiUser, BiPlus, BiLogOut } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
-import { User } from "@/types/auth";
+import { User } from "@/types/user";
 import { DEFAULT_AVATAR_IMG } from "@/constants/images";
 
 export default function UserDropdown({ user }: { user: User }) {

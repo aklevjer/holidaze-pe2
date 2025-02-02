@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/api/request";
-import { AuthResponse } from "@/types/auth";
+import { AuthResponse } from "@/types/user";
 import { RegisterFormData } from "@/schemas/registerSchema";
 
 export const useRegisterUser = () => {
