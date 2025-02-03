@@ -70,6 +70,7 @@ export default {
       },
       gridTemplateColumns: {
         list: "repeat(auto-fill, minmax(min(220px, 100%), 1fr))",
+        table: "220px 1fr 150px 95px",
         venue: "minmax(auto, 525px) 350px",
       },
       backgroundImage: {
