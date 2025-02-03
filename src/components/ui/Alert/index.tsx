@@ -1,8 +1,8 @@
-import { BiErrorCircle, BiCheckCircle } from "react-icons/bi";
+import { BiErrorCircle, BiCheckCircle, BiInfoCircle } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 
 interface AlertProps {
-  type: "error" | "success";
+  type: "error" | "success" | "info";
   message: string;
   className?: string;
 }
@@ -18,6 +18,11 @@ export default function Alert({ type, message, className }: AlertProps) {
       icon: BiCheckCircle,
       iconColor: "text-green-700",
       containerColor: "border-green-700 bg-green-50",
+    },
+    info: {
+      icon: BiInfoCircle,
+      iconColor: "text-teal-700",
+      containerColor: "border-sky-100 bg-sky-50",
     },
   };
 
