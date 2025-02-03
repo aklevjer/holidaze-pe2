@@ -7,9 +7,9 @@ import { BookingFormData, bookingSchema } from "@/schemas/bookingSchema";
 import { formatDateToUTC } from "@/utils/bookings/formatDate";
 
 import Alert from "@/components/ui/Alert";
-import Calendar from "@/components/bookings/Calendar";
-import GuestSelector from "@/components/bookings/GuestSelector";
-import PriceSummary from "@/components/bookings/PriceSummary";
+import Calendar from "@/components/venues/Calendar";
+import GuestSelector from "@/components/venues/GuestSelector";
+import PriceSummary from "@/components/venues/PriceSummary";
 import Button from "@/components/ui/Button";
 
 interface BookingFormProps {
