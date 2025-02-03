@@ -2,12 +2,12 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { Profile } from "@/types/user";
 import Bookings from "@/components/profile/Bookings";
 
-interface Tabs {
+interface TabsProps {
   profile: Profile;
   isOwner: boolean;
 }
 
-export default function Tabs({ profile, isOwner }: Tabs) {
+export default function Tabs({ profile, isOwner }: TabsProps) {
   const { name, venueManager } = profile;
 
   return (
