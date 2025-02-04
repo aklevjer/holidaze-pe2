@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { useProfileVenues } from "@/hooks/profile/useProfileVenues";
+import { useDeleteVenue } from "@/hooks/venues/useDeleteVenue";
+
 import Alert from "@/components/ui/Alert";
 import OwnedVenueCard from "@/components/profile/OwnedVenueCard";
 import VenueCard from "@/components/venues/VenueCard";
+import DeleteModal from "@/components/modals/DeleteModal";
 
 interface OwnedVenuesProps {
   profileName: string;
@@ -9,7 +13,16 @@ interface OwnedVenuesProps {
 }
 
 export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) {
+  const [selectedVenue, setSelectedVenue] = useState<string | null>(null);
   const { venues, isLoading, isError } = useProfileVenues(profileName);
+  const { deleteVenue, isPending } = useDeleteVenue(profileName);
+
+  const handleDeleteVenue = () => {
+    if (selectedVenue) {
+      deleteVenue(selectedVenue);
+      setSelectedVenue(null);
+    }
+  };
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -29,14 +42,28 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
   }
 
   return (
-    <ul className="grid grid-cols-list gap-x-6 gap-y-8">
-      {venues.map((venue) =>
-        isOwner ? (
-          <OwnedVenueCard key={venue.id} venue={venue} />
-        ) : (
-          <VenueCard key={venue.id} venue={venue} />
-        ),
-      )}
-    </ul>
+    <>
+      <ul className="grid grid-cols-list gap-x-6 gap-y-8">
+        {venues.map((venue) =>
+          isOwner ? (
+            <OwnedVenueCard
+              key={venue.id}
+              venue={venue}
+              onDelete={(venueId) => setSelectedVenue(venueId)}
+            />
+          ) : (
+            <VenueCard key={venue.id} venue={venue} />
+          ),
+        )}
+      </ul>
+
+      <DeleteModal
+        modalOpen={!!selectedVenue}
+        closeModal={() => setSelectedVenue(null)}
+        onDelete={handleDeleteVenue}
+        isPending={isPending}
+        deleteType="venue"
+      />
+    </>
   );
 }

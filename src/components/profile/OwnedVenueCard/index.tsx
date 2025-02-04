@@ -8,9 +8,10 @@ import VenueDropdown from "@/components/profile/VenueDropdown";
 
 interface OwnedVenueCardProps {
   venue: Venue;
+  onDelete: (venueId: string) => void;
 }
 
-export default function OwnedVenueCard({ venue }: OwnedVenueCardProps) {
+export default function OwnedVenueCard({ venue, onDelete }: OwnedVenueCardProps) {
   const { id, name, media, price, location } = venue;
 
   return (
@@ -49,7 +50,7 @@ export default function OwnedVenueCard({ venue }: OwnedVenueCardProps) {
 
         <div className="flex justify-between gap-2">
           <Button variant="primary">View bookings</Button>
-          <VenueDropdown venueId={id} />
+          <VenueDropdown venueId={id} onDelete={onDelete} />
         </div>
       </div>
     </li>

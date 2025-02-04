@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { BiDotsHorizontalRounded, BiEdit, BiTrash } from "react-icons/bi";
 
-export default function VenueDropdown({ venueId }: { venueId: string }) {
+interface VenueDropdownProps {
+  venueId: string;
+  onDelete: (venueId: string) => void;
+}
+
+export default function VenueDropdown({ venueId, onDelete }: VenueDropdownProps) {
   return (
     <Popover>
       <PopoverButton
@@ -33,7 +38,10 @@ export default function VenueDropdown({ venueId }: { venueId: string }) {
 
             <li>
               <button
-                onClick={() => close()}
+                onClick={() => {
+                  close();
+                  onDelete(venueId);
+                }}
                 className="flex w-full items-center gap-2 p-3 leading-none text-neutral-600 outline-none transition-colors hover:bg-neutral-200 hover:text-teal-900 focus-visible:rounded focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-teal-900"
               >
                 <BiTrash />
