@@ -25,7 +25,7 @@ export default function Modal({ modalOpen, closeModal, children, className }: Mo
             className,
           )}
         >
-          <CloseButton className="absolute right-4 top-4">
+          <CloseButton aria-label="Close modal" className="absolute right-4 top-4">
             <BiX size={30} />
           </CloseButton>
           {children}
