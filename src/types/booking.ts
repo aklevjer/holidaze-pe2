@@ -21,4 +21,5 @@ export interface Booking {
   customer?: BookingCustomer;
 }
 
+export type BookingsResponse = ApiResponse<Booking[]>;
 export type BookingResponse = ApiResponse<Booking>;

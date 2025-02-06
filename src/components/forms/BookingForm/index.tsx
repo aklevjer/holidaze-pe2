@@ -4,12 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuthStore } from "@/store/authStore";
 import { Booking } from "@/types/booking";
 import { BookingFormData, bookingSchema } from "@/schemas/bookingSchema";
-import { formatDateToUTC } from "@/utils/bookings/formatDate";
+import { formatDateUTC } from "@/utils/bookings/formatDate";
 
 import Alert from "@/components/ui/Alert";
-import Calendar from "@/components/bookings/Calendar";
-import GuestSelector from "@/components/bookings/GuestSelector";
-import PriceSummary from "@/components/bookings/PriceSummary";
+import Calendar from "@/components/venues/Calendar";
+import GuestSelector from "@/components/venues/GuestSelector";
+import PriceSummary from "@/components/venues/PriceSummary";
 import Button from "@/components/ui/Button";
 
 interface BookingFormProps {
@@ -53,8 +53,8 @@ export default function BookingForm({
     const shouldValidate = !!start && !!end;
 
     setDates(dates);
-    setValue("dateFrom", start ? formatDateToUTC(start) : "", { shouldValidate });
-    setValue("dateTo", end ? formatDateToUTC(end) : "", { shouldValidate });
+    setValue("dateFrom", start ? formatDateUTC(start) : "", { shouldValidate });
+    setValue("dateTo", end ? formatDateUTC(end) : "", { shouldValidate });
   };
 
   const handleBooking = (bookingData: BookingFormData) => {

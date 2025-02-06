@@ -1,4 +1,4 @@
-import { User } from "@/types/auth";
+import { User } from "@/types/user";
 import { NAV_LINKS } from "@/constants/links";
 
 import NavLink from "@/components/ui/NavLink";
