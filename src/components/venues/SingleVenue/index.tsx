@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { useCreateBooking } from "@/hooks/bookings/useCreateBooking";
+import { useModal } from "@/hooks/ui/useModal";
 import { Venue } from "@/types/venue";
+import { Booking } from "@/types/booking";
 import { BookingFormData } from "@/schemas/bookingSchema";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
@@ -9,17 +12,23 @@ import Amenities from "@/components/venues/Amenities";
 import Owner from "@/components/venues/Owner";
 import Map from "@/components/venues/Map";
 import BookingForm from "@/components/forms/BookingForm";
+import SuccessModal from "@/components/modals/SuccessModal";
 
 export default function SingleVenue({ venue }: { venue: Venue }) {
   const { id, name, description, media, price, maxGuests } = venue;
   const { rating, meta, location, owner, bookings } = venue;
 
+  const [newBooking, setNewBooking] = useState<Booking | null>(null);
+
   const { createBooking, isPending, error } = useCreateBooking();
+  const { modalOpen, openModal, closeModal } = useModal();
 
   const handleAddBooking = (bookingData: BookingFormData, resetCallback: () => void) => {
     createBooking(bookingData, {
-      onSuccess: () => {
+      onSuccess: ({ data: booking }) => {
         resetCallback();
+        setNewBooking({ ...booking, venue });
+        openModal();
       },
     });
   };
@@ -66,6 +75,8 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
           />
         </div>
       </div>
+
+      <SuccessModal modalOpen={modalOpen} closeModal={closeModal} booking={newBooking} />
     </>
   );
 }
