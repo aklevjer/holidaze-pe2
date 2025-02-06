@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useProfileVenues } from "@/hooks/profile/useProfileVenues";
 import { useDeleteVenue } from "@/hooks/venues/useDeleteVenue";
+import { Venue } from "@/types/venue";
+import { filterUpcomingBookings } from "@/utils/bookings/filterBookings";
+import { sortBookingsByDate } from "@/utils/bookings/sortBookings";
 
 import Alert from "@/components/ui/Alert";
 import OwnedVenueCard from "@/components/profile/OwnedVenueCard";
 import VenueCard from "@/components/venues/VenueCard";
 import DeleteModal from "@/components/modals/DeleteModal";
+import BookingsModal from "@/components/modals/BookingsModal";
 
 interface OwnedVenuesProps {
   profileName: string;
@@ -13,14 +17,24 @@ interface OwnedVenuesProps {
 }
 
 export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) {
-  const [selectedVenue, setSelectedVenue] = useState<string | null>(null);
+  const [venueForBookings, setVenueForBookings] = useState<Venue | null>(null);
+  const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
   const { venues, isLoading, isError } = useProfileVenues(profileName);
   const { deleteVenue, isPending } = useDeleteVenue(profileName);
 
+  const handleViewBookings = (venue: Venue) => {
+    const upcomingBookings = filterUpcomingBookings(venue.bookings || []);
+    const sortedBookings = sortBookingsByDate(upcomingBookings);
+    setVenueForBookings({ ...venue, bookings: sortedBookings });
+    setModalOpen(true);
+  };
+
   const handleDeleteVenue = () => {
-    if (selectedVenue) {
-      deleteVenue(selectedVenue);
-      setSelectedVenue(null);
+    if (venueToDelete) {
+      deleteVenue(venueToDelete.id);
+      setVenueToDelete(null);
     }
   };
 
@@ -49,7 +63,8 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
             <OwnedVenueCard
               key={venue.id}
               venue={venue}
-              onDelete={(venueId) => setSelectedVenue(venueId)}
+              onDelete={() => setVenueToDelete(venue)}
+              onViewBookings={() => handleViewBookings(venue)}
             />
           ) : (
             <VenueCard key={venue.id} venue={venue} />
@@ -57,9 +72,15 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
         )}
       </ul>
 
+      <BookingsModal
+        modalOpen={modalOpen}
+        closeModal={() => setModalOpen(false)}
+        venue={venueForBookings}
+      />
+
       <DeleteModal
-        modalOpen={!!selectedVenue}
-        closeModal={() => setSelectedVenue(null)}
+        modalOpen={!!venueToDelete}
+        closeModal={() => setVenueToDelete(null)}
         onDelete={handleDeleteVenue}
         isPending={isPending}
         deleteType="venue"

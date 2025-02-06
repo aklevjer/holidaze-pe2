@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { BiDotsHorizontalRounded, BiEdit, BiTrash } from "react-icons/bi";
+import { Venue } from "@/types/venue";
 
 interface VenueDropdownProps {
-  venueId: string;
-  onDelete: (venueId: string) => void;
+  venue: Venue;
+  onDelete: () => void;
 }
 
-export default function VenueDropdown({ venueId, onDelete }: VenueDropdownProps) {
+export default function VenueDropdown({ venue, onDelete }: VenueDropdownProps) {
   return (
     <Popover>
       <PopoverButton
@@ -27,7 +28,7 @@ export default function VenueDropdown({ venueId, onDelete }: VenueDropdownProps)
           <>
             <li>
               <Link
-                to={`/venue/${venueId}/edit`}
+                to={`/venue/${venue.id}/edit`}
                 onClick={() => close()}
                 className="flex w-full items-center gap-2 p-3 leading-none text-neutral-600 outline-none transition-colors hover:bg-neutral-200 hover:text-teal-900 focus-visible:rounded focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-teal-900"
               >
@@ -40,7 +41,7 @@ export default function VenueDropdown({ venueId, onDelete }: VenueDropdownProps)
               <button
                 onClick={() => {
                   close();
-                  onDelete(venueId);
+                  onDelete();
                 }}
                 className="flex w-full items-center gap-2 p-3 leading-none text-neutral-600 outline-none transition-colors hover:bg-neutral-200 hover:text-teal-900 focus-visible:rounded focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-teal-900"
               >
