@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { useUpdateProfile } from "@/hooks/profile/useUpdateProfile";
+import { useModal } from "@/hooks/ui/useModal";
 import { Profile } from "@/types/user";
 import { ProfileFormData } from "@/schemas/profileSchema";
 import { DEFAULT_BANNER_IMG, DEFAULT_AVATAR_IMG } from "@/constants/images";
@@ -15,10 +15,9 @@ interface OverviewProps {
 
 export default function Overview({ profile, isOwner }: OverviewProps) {
   const { name, avatar, banner, venueManager } = profile;
-  const [modalOpen, setModalOpen] = useState(false);
-
   const { user, login } = useAuthStore();
   const { updateProfile, isPending, error } = useUpdateProfile(name);
+  const { modalOpen, openModal, closeModal } = useModal();
 
   const handleUpdateProfile = (profileData: ProfileFormData) => {
     updateProfile(profileData, {
@@ -31,7 +30,7 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
             venueManager: profileData.venueManager,
           });
         }
-        setModalOpen(false);
+        closeModal();
       },
     });
   };
@@ -69,7 +68,7 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
                 </Button>
               )}
 
-              <Button variant="secondary" onClick={() => setModalOpen(true)}>
+              <Button variant="secondary" onClick={openModal}>
                 Edit profile
               </Button>
             </div>
@@ -79,7 +78,7 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
 
       <ProfileModal
         modalOpen={modalOpen}
-        closeModal={() => setModalOpen(false)}
+        closeModal={closeModal}
         onSubmit={handleUpdateProfile}
         profile={profile}
         isPending={isPending}

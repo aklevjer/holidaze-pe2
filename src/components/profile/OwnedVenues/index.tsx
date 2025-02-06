@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useProfileVenues } from "@/hooks/profile/useProfileVenues";
 import { useDeleteVenue } from "@/hooks/venues/useDeleteVenue";
+import { useModal } from "@/hooks/ui/useModal";
 import { Venue } from "@/types/venue";
 import { filterUpcomingBookings } from "@/utils/bookings/filterBookings";
 import { sortBookingsByDate } from "@/utils/bookings/sortBookings";
@@ -19,16 +20,16 @@ interface OwnedVenuesProps {
 export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) {
   const [venueForBookings, setVenueForBookings] = useState<Venue | null>(null);
   const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const { venues, isLoading, isError } = useProfileVenues(profileName);
   const { deleteVenue, isPending } = useDeleteVenue(profileName);
+  const { modalOpen, openModal, closeModal } = useModal();
 
   const handleViewBookings = (venue: Venue) => {
     const upcomingBookings = filterUpcomingBookings(venue.bookings || []);
     const sortedBookings = sortBookingsByDate(upcomingBookings);
     setVenueForBookings({ ...venue, bookings: sortedBookings });
-    setModalOpen(true);
+    openModal();
   };
 
   const handleDeleteVenue = () => {
@@ -72,11 +73,7 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
         )}
       </ul>
 
-      <BookingsModal
-        modalOpen={modalOpen}
-        closeModal={() => setModalOpen(false)}
-        venue={venueForBookings}
-      />
+      <BookingsModal modalOpen={modalOpen} closeModal={closeModal} venue={venueForBookings} />
 
       <DeleteModal
         modalOpen={!!venueToDelete}
