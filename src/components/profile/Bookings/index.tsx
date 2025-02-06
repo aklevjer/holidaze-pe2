@@ -30,7 +30,7 @@ export default function Bookings({ profileName }: { profileName: string }) {
   }
 
   if (filteredBookings.length === 0) {
-    return <Alert type="info" message="You don't have any bookings yet." />;
+    return <Alert type="info" message="You don't have any upcoming bookings." />;
   }
 
   return (
