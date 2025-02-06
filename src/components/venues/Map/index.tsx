@@ -32,7 +32,11 @@ export default function Map({ location }: { location: VenueLocation }) {
       {isLoading && <p>Loading map...</p>}
 
       {hasLocation && (
-        <MapContainer center={[latitude, longitude]} zoom={12} className="h-60 w-full rounded-md">
+        <MapContainer
+          center={[latitude, longitude]}
+          zoom={12}
+          className="z-0 h-60 w-full rounded-md"
+        >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
