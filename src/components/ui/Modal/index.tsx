@@ -16,7 +16,7 @@ export default function Modal({ modalOpen, closeModal, children, className }: Mo
         transition
         className="fixed inset-0 bg-black/70 transition ease-in-out data-[closed]:opacity-0"
       />
-      <div className="fixed inset-0 grid place-items-center p-4">
+      <div className="fixed inset-0 grid place-items-center overflow-y-auto p-4">
         <DialogPanel
           as="section"
           transition
