@@ -54,6 +54,7 @@ export default function ProfileForm({
         type="url"
         label="Avatar URL"
         placeholder="https://example.com/avatar.jpg"
+        maxLength={300}
         register={register("avatar.url")}
         error={errors.avatar?.url}
       />
@@ -63,6 +64,7 @@ export default function ProfileForm({
         type="url"
         label="Banner URL"
         placeholder="https://example.com/banner.jpg"
+        maxLength={300}
         register={register("banner.url")}
         error={errors.banner?.url}
       />
