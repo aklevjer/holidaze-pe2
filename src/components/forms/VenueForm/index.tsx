@@ -6,6 +6,7 @@ import { BiTrash } from "react-icons/bi";
 import { Venue } from "@/types/venue";
 import { VenueFormData, venueSchema } from "@/schemas/venueSchema";
 import { isImgUrlValid } from "@/utils/common/validation";
+import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
 import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";
@@ -195,6 +196,7 @@ export default function VenueForm({ onSubmit, isPending, error, venue }: VenueFo
                   <img
                     src={field.url}
                     alt={field.alt}
+                    onError={(e) => (e.currentTarget.src = DEFAULT_VENUE_IMG)}
                     className="aspect-3/2 size-full rounded-md object-cover"
                   />
                 </div>
