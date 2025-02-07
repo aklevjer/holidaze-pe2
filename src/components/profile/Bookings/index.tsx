@@ -37,11 +37,11 @@ export default function Bookings({ profileName }: { profileName: string }) {
     <>
       <table className="w-full text-left">
         <thead className="sr-only md:not-sr-only">
-          <tr className="border-b border-neutral-300 py-2 md:grid md:grid-cols-table">
-            <th className="font-semibold">Dates</th>
-            <th className="font-semibold">Venue</th>
-            <th className="font-semibold">Guests</th>
-            <th className="font-semibold">Actions</th>
+          <tr className="border-b border-neutral-300 md:grid md:grid-cols-table">
+            <th className="p-2 font-semibold">Dates</th>
+            <th className="p-2 font-semibold">Venue</th>
+            <th className="p-2 font-semibold">Guests</th>
+            <th className="p-2 font-semibold">Actions</th>
           </tr>
         </thead>
 
