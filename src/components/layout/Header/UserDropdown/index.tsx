@@ -18,6 +18,7 @@ export default function UserDropdown({ user }: { user: User }) {
         <img
           src={avatar?.url || DEFAULT_AVATAR_IMG}
           alt={avatar?.alt || `Avatar for ${name}`}
+          onError={(e) => (e.currentTarget.src = DEFAULT_AVATAR_IMG)}
           className="size-9 rounded-full object-cover"
         />
         <BiChevronDown

@@ -9,7 +9,7 @@ export const useCreateBooking = () => {
   const { mutate, isPending, error } = useMutation<BookingResponse, Error, BookingFormData>({
     mutationFn: (bookingData) => apiRequest("/holidaze/bookings", "POST", bookingData),
     onSuccess: (_, { venueId }) => {
-      queryClient.refetchQueries({ queryKey: ["venue", venueId] });
+      queryClient.invalidateQueries({ queryKey: ["venue", venueId] });
     },
   });
 

@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { Media } from "@/types/media";
+import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
 export default function Gallery({ images }: { images: Media[] }) {
   const sliderRef = useRef<HTMLUListElement | null>(null);
@@ -64,7 +65,12 @@ export default function Gallery({ images }: { images: Media[] }) {
       >
         {images.map(({ url, alt }, index) => (
           <li key={index} className="aspect-3/2 snap-start md:aspect-5/2">
-            <img src={url} alt={alt} className="size-full object-cover" />
+            <img
+              src={url}
+              alt={alt}
+              onError={(e) => (e.currentTarget.src = DEFAULT_VENUE_IMG)}
+              className="size-full object-cover"
+            />
           </li>
         ))}
       </ul>

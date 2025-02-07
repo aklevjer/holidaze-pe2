@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { twMerge } from "tailwind-merge";
 import { BiTrash } from "react-icons/bi";
 
 import { Venue } from "@/types/venue";
 import { VenueFormData, venueSchema } from "@/schemas/venueSchema";
 import { isImgUrlValid } from "@/utils/common/validation";
+import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
 import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";
@@ -20,10 +20,9 @@ interface VenueFormProps {
   isPending: boolean;
   error: Error | null;
   venue?: Venue;
-  onDelete?: () => void;
 }
 
-export default function VenueForm({ onSubmit, isPending, error, venue, onDelete }: VenueFormProps) {
+export default function VenueForm({ onSubmit, isPending, error, venue }: VenueFormProps) {
   const [imageUrl, setImageUrl] = useState("");
   const [imageUrlError, setImageUrlError] = useState("");
   const {
@@ -197,6 +196,7 @@ export default function VenueForm({ onSubmit, isPending, error, venue, onDelete 
                   <img
                     src={field.url}
                     alt={field.alt}
+                    onError={(e) => (e.currentTarget.src = DEFAULT_VENUE_IMG)}
                     className="aspect-3/2 size-full rounded-md object-cover"
                   />
                 </div>
@@ -227,22 +227,9 @@ export default function VenueForm({ onSubmit, isPending, error, venue, onDelete 
 
       {error && <Alert type="error" message={error.message} />}
 
-      <div className="flex flex-col gap-4 sm:flex-row">
-        <Button
-          variant="primary"
-          type="submit"
-          isLoading={isPending}
-          className={twMerge(!venue && "w-full")}
-        >
-          {venue ? "Update venue" : "Add venue"}
-        </Button>
-
-        {venue && (
-          <Button variant="danger" type="button" onClick={onDelete}>
-            Delete venue
-          </Button>
-        )}
-      </div>
+      <Button variant="primary" type="submit" isLoading={isPending} className="w-full">
+        {venue ? "Update venue" : "Add venue"}
+      </Button>
     </form>
   );
 }

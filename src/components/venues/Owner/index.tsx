@@ -11,13 +11,14 @@ export default function Owner({ owner }: { owner: VenueOwner }) {
         <img
           src={avatar?.url || DEFAULT_AVATAR_IMG}
           alt={avatar?.alt || `Avatar for ${name}`}
+          onError={(e) => (e.currentTarget.src = DEFAULT_AVATAR_IMG)}
           className="size-10 rounded-full object-cover"
         />
 
         <div>
           <div className="flex items-center gap-1">
             <span className="font-semibold">{name}</span>
-            <span className="rounded-full border border-sky-100 bg-sky-50 px-2 py-1 text-xs font-semibold text-teal-700">
+            <span className="rounded-full border border-sky-100 bg-sky-50 px-2 py-1 text-xs font-medium text-teal-700">
               Host
             </span>
           </div>

@@ -41,6 +41,7 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
         <img
           src={banner?.url || DEFAULT_BANNER_IMG}
           alt={banner?.alt || `Banner for ${name}`}
+          onError={(e) => (e.currentTarget.src = DEFAULT_BANNER_IMG)}
           className="h-52 w-full rounded-md object-cover"
         />
 
@@ -48,6 +49,7 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
           <img
             src={avatar?.url || DEFAULT_AVATAR_IMG}
             alt={avatar?.alt || `Avatar for ${name}`}
+            onError={(e) => (e.currentTarget.src = DEFAULT_AVATAR_IMG)}
             className="-mt-10 size-28 rounded-full border-2 border-white object-cover"
           />
 

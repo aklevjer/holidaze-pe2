@@ -19,6 +19,7 @@ export default function VenueCard({ venue, useH2 }: VenueCardProps) {
           <img
             src={media[0]?.url || DEFAULT_VENUE_IMG}
             alt={media[0]?.alt || name}
+            onError={(e) => (e.currentTarget.src = DEFAULT_VENUE_IMG)}
             className="aspect-3/2 size-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
 
