@@ -23,7 +23,10 @@ apiClient.interceptors.request.use((config) => {
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    const errorMessage = error?.response?.data?.errors[0]?.message || "Something went wrong!";
+    const errorMessage =
+      error?.response?.data?.errors[0]?.message ||
+      "Oops! Something went wrong. Please try again later.";
+
     return Promise.reject(new Error(errorMessage));
   },
 );
