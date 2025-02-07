@@ -8,15 +8,12 @@ import VenueForm from "@/components/forms/VenueForm";
 
 export default function EditVenue() {
   const { id } = useParams();
+
   const { venue, isLoading, isError } = useVenueById(String(id));
   const { updateVenue, isPending, error } = useUpdateVenue(String(id));
 
   const handleEditVenue = (venueData: VenueFormData) => {
     updateVenue(venueData);
-  };
-
-  const handleDeleteVenue = () => {
-    // TODO: Delete venue
   };
 
   if (isLoading) return <p>Loading...</p>;
@@ -30,13 +27,7 @@ export default function EditVenue() {
       )}
 
       {venue && (
-        <VenueForm
-          onSubmit={handleEditVenue}
-          onDelete={handleDeleteVenue}
-          isPending={isPending}
-          error={error}
-          venue={venue}
-        />
+        <VenueForm onSubmit={handleEditVenue} isPending={isPending} error={error} venue={venue} />
       )}
     </section>
   );
