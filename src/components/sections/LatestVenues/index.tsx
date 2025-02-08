@@ -33,7 +33,7 @@ export default function LatestVenues({ venues, isLoading, isError }: LatestVenue
         <Alert type="error" message="Oops! Failed to load latest venues. Please try again later." />
       )}
 
-      {venues.length > 0 && (
+      {venues.length > 0 && !isLoading && (
         <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere sm:grid-cols-2 md:grid-cols-4">
           {venues.map((venue) => (
             <VenueCard key={venue.id} venue={venue} />
