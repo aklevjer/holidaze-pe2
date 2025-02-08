@@ -2,6 +2,8 @@ import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { BiMap } from "react-icons/bi";
 import { useVenueLocation } from "@/hooks/venues/useVenueLocation";
 import { VenueLocation } from "@/types/venue";
+
+import Skeleton from "@/components/ui/Skeleton";
 import Alert from "@/components/ui/Alert";
 
 export default function Map({ location }: { location: VenueLocation }) {
@@ -25,11 +27,11 @@ export default function Map({ location }: { location: VenueLocation }) {
         <p>No location available.</p>
       )}
 
+      {isLoading && <Skeleton className="h-60" />}
+
       {isError && (
         <Alert type="error" message="Oops! Failed to load map location. Please try again later." />
       )}
-
-      {isLoading && <p>Loading map...</p>}
 
       {hasLocation && (
         <MapContainer
