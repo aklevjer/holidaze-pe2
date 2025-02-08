@@ -74,9 +74,6 @@ export default {
         "table-sm": "240px 1fr 95px",
         venue: "minmax(auto, 525px) 350px",
       },
-      backgroundImage: {
-        hero: "url('/images/hero-bg.jpg')",
-      },
       aspectRatio: {
         "3/2": "3 / 2",
         "5/2": "5 / 2",
@@ -84,8 +81,23 @@ export default {
       maxWidth: {
         prose: "50ch",
       },
+      backgroundImage: {
+        hero: "url('/images/hero-bg.jpg')",
+        skeleton: "linear-gradient(to right, #e2e5e7 10%, #efeff0 20%, #e2e5e7 30%)",
+      },
+      backgroundSize: {
+        skeleton: "200% 100%",
+      },
       boxShadow: {
         elevated: "0px 10px 30px 0px rgba(153, 153, 153, 0.3)",
+      },
+      animation: {
+        shimmer: "shimmer 1s linear infinite",
+      },
+      keyframes: {
+        shimmer: {
+          to: { backgroundPositionX: "-200%" },
+        },
       },
     },
   },
