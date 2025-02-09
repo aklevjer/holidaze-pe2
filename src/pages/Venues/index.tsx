@@ -54,7 +54,7 @@ export default function Venues() {
   return (
     <Page
       title="Venues"
-      description="Browse and discover unique venues on Holidaze. Search, sort, and browse venues to find your perfect stay."
+      description="Browse and discover unique venues on Holidaze. Search, sort, and find your perfect stay."
     >
       <section className="container mb-20 mt-12">
         <h1 className="mb-6 text-3xl font-semibold capitalize">Venues</h1>
