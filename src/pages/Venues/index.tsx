@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useVenues } from "@/hooks/venues/useVenues";
 
+import Page from "@/components/layout/Page";
 import SearchBar from "@/components/ui/SearchBar";
 import SortSelect from "@/components/ui/SortSelect";
 import CardSkeleton from "@/components/skeletons/CardSkeleton";
@@ -51,42 +52,47 @@ export default function Venues() {
   }, [searchParams]);
 
   return (
-    <section className="container mb-20 mt-12">
-      <h1 className="mb-6 text-3xl font-semibold capitalize">Venues</h1>
+    <Page
+      title="Venues"
+      description="Browse and discover unique venues on Holidaze. Search, sort, and browse venues to find your perfect stay."
+    >
+      <section className="container mb-20 mt-12">
+        <h1 className="mb-6 text-3xl font-semibold capitalize">Venues</h1>
 
-      <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row">
-        <SearchBar queryParam={queryParam} onSearch={handleSearch} />
-        <SortSelect onSort={handleSort} />
-      </div>
-
-      {isLoading && (
-        <div className="grid grid-cols-list gap-x-6 gap-y-8">
-          {Array.from({ length: 16 }).map((_, index) => (
-            <CardSkeleton key={index} />
-          ))}
+        <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row">
+          <SearchBar queryParam={queryParam} onSearch={handleSearch} />
+          <SortSelect onSort={handleSort} />
         </div>
-      )}
 
-      {isError && (
-        <Alert type="error" message="Oops! Failed to load venues. Please try again later." />
-      )}
+        {isLoading && (
+          <div className="grid grid-cols-list gap-x-6 gap-y-8">
+            {Array.from({ length: 16 }).map((_, index) => (
+              <CardSkeleton key={index} />
+            ))}
+          </div>
+        )}
 
-      {searchQuery && !isLoading && (
-        <p className="mb-6 flex gap-1">
-          Found {meta?.totalCount} result{meta?.totalCount !== 1 ? "s" : ""} for
-          <span className="font-semibold overflow-wrap-anywhere">‘{searchQuery}’</span>
-        </p>
-      )}
+        {isError && (
+          <Alert type="error" message="Oops! Failed to load venues. Please try again later." />
+        )}
 
-      {venues.length > 0 && !isLoading && (
-        <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere">
-          {venues.map((venue) => (
-            <VenueCard key={venue.id} venue={venue} useH2 />
-          ))}
-        </ul>
-      )}
+        {searchQuery && !isLoading && (
+          <p className="mb-6 flex gap-1">
+            Found {meta?.totalCount} result{meta?.totalCount !== 1 ? "s" : ""} for
+            <span className="font-semibold overflow-wrap-anywhere">‘{searchQuery}’</span>
+          </p>
+        )}
 
-      {meta && <Pagination meta={meta} onChangePage={handlePagination} />}
-    </section>
+        {venues.length > 0 && !isLoading && (
+          <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere">
+            {venues.map((venue) => (
+              <VenueCard key={venue.id} venue={venue} useH2 />
+            ))}
+          </ul>
+        )}
+
+        {meta && <Pagination meta={meta} onChangePage={handlePagination} />}
+      </section>
+    </Page>
   );
 }

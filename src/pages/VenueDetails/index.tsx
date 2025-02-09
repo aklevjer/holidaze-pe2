@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useVenueById } from "@/hooks/venues/useVenueById";
 
+import Page from "@/components/layout/Page";
 import VenueSkeleton from "@/components/skeletons/VenueSkeleton";
 import SingleVenue from "@/components/venues/SingleVenue";
 import Alert from "@/components/ui/Alert";
@@ -10,18 +11,23 @@ export default function VenueDetails() {
   const { venue, isLoading, isError } = useVenueById(String(id));
 
   return (
-    <section className="mb-20 mt-12 space-y-6 md:container">
-      {isLoading && <VenueSkeleton />}
+    <Page
+      title={venue?.name || "Venue"}
+      description={venue?.description || "Discover more about this venue at Holidaze."}
+    >
+      <section className="mb-20 mt-12 space-y-6 md:container">
+        {isLoading && <VenueSkeleton />}
 
-      {isError && (
-        <Alert
-          type="error"
-          message="Oops! Failed to load venue. Please try again later."
-          className="mx-4 md:mx-0"
-        />
-      )}
+        {isError && (
+          <Alert
+            type="error"
+            message="Oops! Failed to load venue. Please try again later."
+            className="mx-4 md:mx-0"
+          />
+        )}
 
-      {venue && <SingleVenue venue={venue} />}
-    </section>
+        {venue && <SingleVenue venue={venue} />}
+      </section>
+    </Page>
   );
 }
