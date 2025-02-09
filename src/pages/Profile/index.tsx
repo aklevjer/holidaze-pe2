@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 import { useProfileByName } from "@/hooks/profile/useProfileByName";
 
-import Alert from "@/components/ui/Alert";
+import ProfileSkeleton from "@/components/skeletons/ProfileSkeleton";
 import Overview from "@/components/profile/Overview";
 import Tabs from "@/components/profile/Tabs";
+import Alert from "@/components/ui/Alert";
 
 export default function Profile() {
   const { name } = useParams();
@@ -15,10 +16,10 @@ export default function Profile() {
 
   const { profile, isLoading, isError } = useProfileByName(profileName);
 
-  if (isLoading) return <p>Loading..</p>;
-
   return (
     <section className="container mb-20 mt-12 space-y-10 overflow-wrap-anywhere">
+      {isLoading && <ProfileSkeleton isOwner={isOwner} />}
+
       {isError && (
         <Alert type="error" message="Oops! Failed to load profile. Please try again later." />
       )}

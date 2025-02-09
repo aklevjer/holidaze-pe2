@@ -11,12 +11,10 @@ export default function Home() {
     limit: 4,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-
   return (
     <>
       <Hero />
-      <LatestVenues venues={venues} isError={isError} />
+      <LatestVenues venues={venues} isLoading={isLoading} isError={isError} />
       <NewsletterForm />
     </>
   );

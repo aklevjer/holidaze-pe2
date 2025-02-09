@@ -3,8 +3,9 @@ import { useVenueById } from "@/hooks/venues/useVenueById";
 import { useUpdateVenue } from "@/hooks/venues/useUpdateVenue";
 import { VenueFormData } from "@/schemas/venueSchema";
 
-import Alert from "@/components/ui/Alert";
+import Skeleton from "@/components/ui/Skeleton";
 import VenueForm from "@/components/forms/VenueForm";
+import Alert from "@/components/ui/Alert";
 
 export default function EditVenue() {
   const { id } = useParams();
@@ -16,11 +17,11 @@ export default function EditVenue() {
     updateVenue(venueData);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-
   return (
     <section className="container mb-20 mt-12 max-w-2xl space-y-4">
       <h1 className="text-3xl font-semibold capitalize">Edit venue</h1>
+
+      {isLoading && <Skeleton className="min-h-screen" />}
 
       {isError && (
         <Alert type="error" message="Oops! Failed to load venue. Please try again later." />

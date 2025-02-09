@@ -4,6 +4,7 @@ import { useVenues } from "@/hooks/venues/useVenues";
 
 import SearchBar from "@/components/ui/SearchBar";
 import SortSelect from "@/components/ui/SortSelect";
+import CardSkeleton from "@/components/skeletons/CardSkeleton";
 import VenueCard from "@/components/venues/VenueCard";
 import Pagination from "@/components/ui/Pagination";
 import Alert from "@/components/ui/Alert";
@@ -35,8 +36,9 @@ export default function Venues() {
   };
 
   const handlePagination = (page: number) => {
-    setCurrentPage(page);
+    window.scrollTo({ top: window.scrollY * 0.3, behavior: "instant" });
     window.scrollTo({ top: 0, behavior: "smooth" });
+    setCurrentPage(page);
   };
 
   useEffect(() => {
@@ -57,6 +59,14 @@ export default function Venues() {
         <SortSelect onSort={handleSort} />
       </div>
 
+      {isLoading && (
+        <div className="grid grid-cols-list gap-x-6 gap-y-8">
+          {Array.from({ length: 16 }).map((_, index) => (
+            <CardSkeleton key={index} />
+          ))}
+        </div>
+      )}
+
       {isError && (
         <Alert type="error" message="Oops! Failed to load venues. Please try again later." />
       )}
@@ -68,7 +78,7 @@ export default function Venues() {
         </p>
       )}
 
-      {venues.length > 0 && (
+      {venues.length > 0 && !isLoading && (
         <ul className="grid grid-cols-list gap-x-6 gap-y-8 overflow-wrap-anywhere">
           {venues.map((venue) => (
             <VenueCard key={venue.id} venue={venue} useH2 />
