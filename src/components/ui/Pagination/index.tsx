@@ -25,12 +25,18 @@ export default function Pagination({ meta, onChangePage }: PaginationProps) {
     return null;
   }
 
+  /**
+   * Navigates to the previous page if available.
+   */
   const handlePrevPage = () => {
     if (previousPage) {
       onChangePage(previousPage);
     }
   };
 
+  /**
+   * Navigates to the next page if available.
+   */
   const handleNextPage = () => {
     if (nextPage) {
       onChangePage(nextPage);

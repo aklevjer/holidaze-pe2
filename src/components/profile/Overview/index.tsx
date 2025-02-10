@@ -30,16 +30,14 @@ export default function Overview({ profile, isOwner }: OverviewProps) {
   const { updateProfile, isPending, error } = useUpdateProfile(name);
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Updates the profile and refreshes the user session on success.
+   */
   const handleUpdateProfile = (profileData: ProfileFormData) => {
     updateProfile(profileData, {
-      onSuccess: () => {
+      onSuccess: (_, { avatar, banner, venueManager }) => {
         if (user) {
-          login({
-            ...user,
-            avatar: profileData.avatar,
-            banner: profileData.banner,
-            venueManager: profileData.venueManager,
-          });
+          login({ ...user, avatar, banner, venueManager });
         }
         closeModal();
       },

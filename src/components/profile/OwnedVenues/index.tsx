@@ -37,6 +37,12 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
   const { deleteVenue, isPending } = useDeleteVenue(profileName);
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Handles viewing the bookings for a specific venue.
+   * Filters and sorts the upcoming bookings, then sets the venue state for the modal.
+   *
+   * @param venue - The venue whose bookings are to be viewed.
+   */
   const handleViewBookings = (venue: Venue) => {
     const upcomingBookings = filterUpcomingBookings(venue.bookings || []);
     const sortedBookings = sortBookingsByDate(upcomingBookings);
@@ -44,6 +50,9 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
     openModal();
   };
 
+  /**
+   * Deletes the selected venue and resets the `venueToDelete` state.
+   */
   const handleDeleteVenue = () => {
     if (venueToDelete) {
       deleteVenue(venueToDelete.id);

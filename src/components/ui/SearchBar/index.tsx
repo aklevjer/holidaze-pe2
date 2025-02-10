@@ -22,6 +22,12 @@ export default function SearchBar({ queryParam, onSearch }: SearchBarProps) {
   const [inputValue, setInputValue] = useState(queryParam);
   const debouncedSearch = useRef(debounce((query: string) => onSearch(query)));
 
+  /**
+   * Handles input changes and updates the search query.
+   * Triggers the debounced search function.
+   *
+   * @param e - The input change event.
+   */
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setInputValue(query);

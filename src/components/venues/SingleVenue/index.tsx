@@ -33,6 +33,12 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
   const { createBooking, isPending, error } = useCreateBooking();
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Creates a new booking, resets the form, and opens the success modal.
+   *
+   * @param bookingData - The booking details submitted by the user.
+   * @param resetCallback - Callback function to reset the booking form after success.
+   */
   const handleAddBooking = (bookingData: BookingFormData, resetCallback: () => void) => {
     createBooking(bookingData, {
       onSuccess: ({ data: booking }) => {

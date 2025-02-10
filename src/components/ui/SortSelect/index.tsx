@@ -12,6 +12,11 @@ interface SortSelectProps {
  * @returns JSX element representing the sort select dropdown.
  */
 export default function SortSelect({ onSort }: SortSelectProps) {
+  /**
+   * Handles sorting option changes and triggers the onSort callback.
+   *
+   * @param e - The select change event.
+   */
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const sortOptions = e.target.value;
     onSort(sortOptions);

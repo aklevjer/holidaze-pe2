@@ -27,6 +27,9 @@ export default function Bookings({ profileName }: { profileName: string }) {
 
   const filteredBookings = filterUpcomingBookings(bookings);
 
+  /**
+   * Deletes the selected booking and resets the `selectedBooking` state.
+   */
   const handleDeleteBooking = () => {
     if (selectedBooking) {
       deleteBooking(selectedBooking);
