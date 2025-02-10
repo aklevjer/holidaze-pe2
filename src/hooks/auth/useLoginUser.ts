@@ -5,6 +5,15 @@ import { apiRequest } from "@/api/request";
 import { AuthResponse } from "@/types/user";
 import { LoginFormData } from "@/schemas/loginSchema";
 
+/**
+ * Custom hook that logs the user in via the API.
+ * Stores the user state and navigates to the profile page on success.
+ *
+ * @returns An object containing:
+ * - `loginUser`: The mutation function to trigger the login request.
+ * - `isPending`: Indicating whether the request is in progress.
+ * - `error`: The error object if the request fails.
+ */
 export const useLoginUser = () => {
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
