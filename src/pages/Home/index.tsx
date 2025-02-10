@@ -4,6 +4,13 @@ import Hero from "@/components/sections/Hero";
 import LatestVenues from "@/components/sections/LatestVenues";
 import NewsletterForm from "@/components/forms/NewsletterForm";
 
+/**
+ * Home component that renders the Home page with a hero section, latest venues, and a newsletter form.
+ * Fetches and displays the most recent venues.
+ *
+ * @component
+ * @returns JSX element representing the Home page.
+ */
 export default function Home() {
   const { venues, isLoading, isError } = useVenues({
     sort: "created",

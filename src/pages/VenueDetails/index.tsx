@@ -6,6 +6,12 @@ import VenueSkeleton from "@/components/skeletons/VenueSkeleton";
 import SingleVenue from "@/components/venues/SingleVenue";
 import Alert from "@/components/ui/Alert";
 
+/**
+ * VenueDetails component that renders the Venue Details page, displaying information about a specific venue.
+ *
+ * @component
+ * @returns JSX element representing the Venue Details page.
+ */
 export default function VenueDetails() {
   const { id } = useParams();
   const { venue, isLoading, isError } = useVenueById(String(id));
