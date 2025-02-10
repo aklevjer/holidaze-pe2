@@ -1,5 +1,12 @@
 import Skeleton from "@/components/ui/Skeleton";
 
+/**
+ * CardSkeleton component that displays a loading skeleton for a card.
+ * Includes placeholders for an image, title, location, guests count, and rating.
+ *
+ * @component
+ * @returns JSX element representing the card skeleton.
+ */
 export default function CardSkeleton() {
   return (
     <div className="grid grid-rows-card overflow-hidden rounded-md border border-neutral-300 shadow-elevated">

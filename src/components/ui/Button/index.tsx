@@ -12,6 +12,21 @@ interface ButtonProps {
   className?: string;
 }
 
+/**
+ * Button component that can be rendered as a link or a regular button based on the provided props.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.variant - The variant of button (primary, secondary, danger).
+ * @param props.children - The content (text or elements) to display inside the button.
+ * @param [props.type] - The type of the button, either for a regular button or submit (optional).
+ * @param [props.path] - If provided, renders the button as a link, navigating to the specified URL.
+ * @param [props.onClick] - The function to call when the button is clicked (optional).
+ * @param [props.isLoading] - If `true`, a loading spinner is displayed inside the button (optional).
+ * @param [props.className] - Additional CSS classes to style the button (optional).
+ *
+ * @returns JSX element representing the button.
+ */
 export default function Button({
   variant,
   children,

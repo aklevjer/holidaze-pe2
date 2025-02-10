@@ -12,6 +12,16 @@ interface LoginFormProps {
   isPending: boolean;
 }
 
+/**
+ * LoginForm component that allows users to login with their email and password.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSubmit - Function to handle form submission with login data.
+ * @param props.isPending - Whether the login request is in progress.
+ *
+ * @returns JSX element representing the login form.
+ */
 export default function LoginForm({ onSubmit, isPending }: LoginFormProps) {
   const {
     register,

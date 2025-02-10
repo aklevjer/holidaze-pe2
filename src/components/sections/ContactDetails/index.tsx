@@ -1,6 +1,12 @@
 import { BiPhone, BiEnvelope, BiMap } from "react-icons/bi";
 import { SOCIAL_LINKS } from "@/constants/links";
 
+/**
+ * ContactDetails component that displays contact information and social media links.
+ *
+ * @component
+ * @returns JSX element representing the contact details.
+ */
 export default function ContactDetails() {
   return (
     <section>

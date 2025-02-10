@@ -8,6 +8,16 @@ interface VenueCardProps {
   useH2?: boolean;
 }
 
+/**
+ * VenueCard component that displays details of a venue in a card format.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venue - The venue details to display in the card.
+ * @param props.useH2 - If `true`, renders the venue name as an `h2`, otherwise as an `h3`.
+ *
+ * @returns JSX element representing the venue card.
+ */
 export default function VenueCard({ venue, useH2 }: VenueCardProps) {
   const { id, name, media, price, location, maxGuests, rating } = venue;
   const HeadingTag = useH2 ? "h2" : "h3";

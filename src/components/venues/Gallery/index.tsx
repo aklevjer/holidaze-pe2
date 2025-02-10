@@ -3,6 +3,16 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { Media } from "@/types/media";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
+/**
+ * Gallery component that renders an interactive image carousel.
+ * Users can navigate through images using arrow buttons or swipe gestures.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.images - List of images to display in the gallery.
+ *
+ * @returns JSX element representing the gallery.
+ */
 export default function Gallery({ images }: { images: Media[] }) {
   const sliderRef = useRef<HTMLUListElement | null>(null);
   const [currentPos, setCurrentPos] = useState(0);

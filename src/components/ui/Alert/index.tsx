@@ -7,6 +7,17 @@ interface AlertProps {
   className?: string;
 }
 
+/**
+ * Alert component that displays a styled alert with an icon and a message.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.type - The type of alert (error, success, info).
+ * @param props.message - The message to display in the alert.
+ * @param [props.className] - Additional CSS classes for the alert (optional).
+ *
+ * @returns JSX element representing the alert.
+ */
 export default function Alert({ type, message, className }: AlertProps) {
   const types = {
     error: {

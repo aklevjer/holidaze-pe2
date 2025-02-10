@@ -22,6 +22,21 @@ interface BookingFormProps {
   maxGuests: number;
 }
 
+/**
+ * BookingForm component that allows users to book a venue by selecting dates and guests.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSubmit - Function to handle form submission with booking data.
+ * @param props.venueId - The ID of the venue being booked.
+ * @param props.isPending - Whether the booking request is in progress.
+ * @param props.error - An error object if the booking request fails, otherwise `null`.
+ * @param props.bookings - List of existing bookings to show unavailable dates.
+ * @param props.price - Price per night for the venue.
+ * @param props.maxGuests - Maximum number of guests allowed.
+ *
+ * @returns JSX element representing the booking form.
+ */
 export default function BookingForm({
   onSubmit,
   venueId,
@@ -48,6 +63,11 @@ export default function BookingForm({
     },
   });
 
+  /**
+   * Handles changes to the date picker and updates the form state.
+   *
+   * @param dates - Selected start and end dates.
+   */
   const handleDateChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
     const shouldValidate = !!start && !!end;
@@ -57,6 +77,11 @@ export default function BookingForm({
     setValue("dateTo", end ? formatDateUTC(end) : "", { shouldValidate });
   };
 
+  /**
+   * Handles form submission and resets the form after successful booking.
+   *
+   * @param bookingData - The submitted booking data.
+   */
   const handleBooking = (bookingData: BookingFormData) => {
     onSubmit(bookingData, () => {
       setDates([null, null]);

@@ -12,6 +12,24 @@ interface TextInputProps extends React.ComponentPropsWithoutRef<"input"> {
   children?: React.ReactNode;
 }
 
+/**
+ * TextInput component that renders a customizable text input field.
+ * Integrates with `react-hook-form` and optionally displays an error message.
+ * It also accepts all the default props of a standard HTML `<input>`.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.id - The unique ID for the text input.
+ * @param props.type - The type of text input (i.e. text, email, number, url).
+ * @param props.label - The text to display as the label for the text input.
+ * @param props.placeholder - The placeholder text to display in the text input.
+ * @param [props.register] - Optional `react-hook-form` register object to bind the text input to form state.
+ * @param [props.error] - Optional error object containing a message to display.
+ * @param [props.children] - Optional content to be rendered beside the text input (i.e. icons or buttons).
+ * @param [props.rest] - Any other props passed to the underlying `input` element (i.e. `maxLength`, `autoFocus`).
+ *
+ * @returns JSX element representing the text input.
+ */
 export default function TextInput({
   id,
   type,

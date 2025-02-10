@@ -14,6 +14,16 @@ interface RegisterFormProps {
   isPending: boolean;
 }
 
+/**
+ * RegisterForm component that allows users to register with their username, email, and password.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSubmit - Function to handle form submission with registration data.
+ * @param props.isPending - Whether the register request is in progress.
+ *
+ * @returns JSX element representing the register form.
+ */
 export default function RegisterForm({ onSubmit, isPending }: RegisterFormProps) {
   const {
     register,

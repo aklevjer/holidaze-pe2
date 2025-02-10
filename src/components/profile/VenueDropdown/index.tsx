@@ -8,6 +8,16 @@ interface VenueDropdownProps {
   onDelete: () => void;
 }
 
+/**
+ * VenueDropdown component that displays a menu with options to edit and delete a venue.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venue - The venue data to display the dropdown options for.
+ * @param props.onDelete - Callback function to handle the venue deletion.
+ *
+ * @returns JSX element representing the venue dropdown menu.
+ */
 export default function VenueDropdown({ venue, onDelete }: VenueDropdownProps) {
   return (
     <Popover>

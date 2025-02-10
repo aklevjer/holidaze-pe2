@@ -2,6 +2,15 @@ interface SortSelectProps {
   onSort: (sortOptions: string) => void;
 }
 
+/**
+ * SortSelect component that allows users to select a sorting option from a dropdown.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSort - Callback function triggered when the user selects a sorting option.
+ *
+ * @returns JSX element representing the sort select dropdown.
+ */
 export default function SortSelect({ onSort }: SortSelectProps) {
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const sortOptions = e.target.value;

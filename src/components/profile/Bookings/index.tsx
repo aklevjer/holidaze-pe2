@@ -10,6 +10,16 @@ import Alert from "@/components/ui/Alert";
 import Button from "@/components/ui/Button";
 import DeleteModal from "@/components/modals/DeleteModal";
 
+/**
+ * Bookings component that displays a user's upcoming bookings.
+ * Allows the user to view and delete their bookings.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.profileName - The name of the profile to display bookings for.
+ *
+ * @returns JSX element representing the bookings or error/loading state.
+ */
 export default function Bookings({ profileName }: { profileName: string }) {
   const [selectedBooking, setSelectedBooking] = useState<string | null>(null);
   const { bookings, isLoading, isError } = useProfileBookings(profileName);

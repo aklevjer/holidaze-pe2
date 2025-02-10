@@ -5,6 +5,12 @@ import { NewsletterFormData, newsletterSchema } from "@/schemas/newsletterSchema
 import TextInput from "@/components/ui/TextInput";
 import Button from "@/components/ui/Button";
 
+/**
+ * NewsletterForm component that allows users to subscribe to a newsletter with their email.
+ *
+ * @component
+ * @returns JSX element representing the newsletter form.
+ */
 export default function NewsletterForm() {
   const {
     register,
@@ -15,6 +21,11 @@ export default function NewsletterForm() {
     resolver: zodResolver(newsletterSchema),
   });
 
+  /**
+   * Handles form submission and resets the form after successful submission.
+   *
+   * @param newsletterData - The submitted newsletter data.
+   */
   const handleNewsletter = (newsletterData: NewsletterFormData) => {
     console.log("Newsletter form data:", newsletterData);
     reset();

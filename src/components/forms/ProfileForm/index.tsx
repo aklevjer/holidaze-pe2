@@ -17,6 +17,19 @@ interface ProfileFormProps {
   profile: Profile;
 }
 
+/**
+ * ProfileForm component that allows users to update their profile.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSubmit - Function to handle form submission with profile data.
+ * @param props.onCancel - Function to handle form cancellation.
+ * @param props.isPending - Whether the update request is in progress.
+ * @param props.error - An error object if the update request fails, otherwise `null`.
+ * @param props.profile - The user's profile data, used to prefill the form.
+ *
+ * @returns JSX element representing the profile form.
+ */
 export default function ProfileForm({
   onSubmit,
   onCancel,

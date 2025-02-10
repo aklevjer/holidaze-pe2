@@ -1,5 +1,12 @@
 import Skeleton from "@/components/ui/Skeleton";
 
+/**
+ * VenueSkeleton component that displays a loading skeleton for the venue details page.
+ * Includes placeholders for the venue image, details, amenities, location, and booking form.
+ *
+ * @component
+ * @returns JSX element representing the venue skeleton.
+ */
 export default function VenueSkeleton() {
   return (
     <>

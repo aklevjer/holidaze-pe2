@@ -5,6 +5,15 @@ import { useAuthStore } from "@/store/authStore";
 import { User } from "@/types/user";
 import { DEFAULT_AVATAR_IMG } from "@/constants/images";
 
+/**
+ * UserDropdown component that displays a user avatar and a menu with options for the logged-in user.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.user - The currently logged-in user.
+ *
+ * @returns JSX element representing the user dropdown menu.
+ */
 export default function UserDropdown({ user }: { user: User }) {
   const logout = useAuthStore((state) => state.logout);
   const { name, avatar, venueManager } = user;

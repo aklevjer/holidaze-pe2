@@ -7,6 +7,17 @@ interface SearchBarProps {
   onSearch: (query: string) => void;
 }
 
+/**
+ * SearchBar component with a debounced input for searching.
+ * Triggers the `onSearch` callback after a delay to improve performance.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.queryParam - The query param to populate the input with.
+ * @param props.onSearch - Callback to handle the search when the query changes.
+ *
+ * @returns JSX element representing the search bar.
+ */
 export default function SearchBar({ queryParam, onSearch }: SearchBarProps) {
   const [inputValue, setInputValue] = useState(queryParam);
   const debouncedSearch = useRef(debounce((query: string) => onSearch(query)));

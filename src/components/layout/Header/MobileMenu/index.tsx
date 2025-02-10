@@ -11,6 +11,16 @@ interface MobileMenuProps {
   closeMenu: () => void;
 }
 
+/**
+ * MobileMenu component that displays the mobile navigation and search form.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.menuOpen - Whether the mobile menu is currently open.
+ * @param props.closeMenu - Function to close the mobile menu when invoked.
+ *
+ * @returns JSX element representing the mobile menu.
+ */
 export default function MobileMenu({ menuOpen, closeMenu }: MobileMenuProps) {
   return (
     <Dialog open={menuOpen} onClose={closeMenu} className="md:hidden">

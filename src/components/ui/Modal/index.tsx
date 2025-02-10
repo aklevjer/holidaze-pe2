@@ -9,6 +9,18 @@ interface ModalProps {
   className?: string;
 }
 
+/**
+ * Modal component that displays a modal with content and close functionality.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.modalOpen - Whether the modal is currently open.
+ * @param props.closeModal - Function to close the modal when invoked.
+ * @param props.children - The content to be rendered inside the modal.
+ * @param [props.className] - Additional CSS classes to style the modal (optional).
+ *
+ * @returns JSX element representing the modal.
+ */
 export default function Modal({ modalOpen, closeModal, children, className }: ModalProps) {
   return (
     <Dialog open={modalOpen} onClose={closeModal}>

@@ -18,6 +18,17 @@ interface OwnedVenuesProps {
   isOwner: boolean;
 }
 
+/**
+ * OwnedVenues component that displays a list of venues owned by the user.
+ * Allows for venue management actions like viewing bookings and deleting venues.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.profileName - The name of the profile whose owned venues are displayed.
+ * @param props.isOwner - Whether the logged-in user is the owner of the profile.
+ *
+ * @returns JSX element representing the owned venues.
+ */
 export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) {
   const [venueForBookings, setVenueForBookings] = useState<Venue | null>(null);
   const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null);
