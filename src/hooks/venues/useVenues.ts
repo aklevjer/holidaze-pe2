@@ -13,11 +13,12 @@ interface UseVenuesParams {
 /**
  * Custom hook that retrieves a list of venues with optional search, sorting, and pagination.
  *
- * @param query - The search query for filtering venues (optional).
- * @param sort - The field to sort the venues by.
- * @param sortOrder - The sort order (`asc` or `desc`).
- * @param page - The page number for pagination.
- * @param limit - The number of venues to retrieve per page.
+ * @param params - The params passed to the hook.
+ * @param params.query - The search query for filtering venues (optional).
+ * @param params.sort - The field to sort the venues by.
+ * @param params.sortOrder - The sort order (`asc` or `desc`).
+ * @param params.page - The page number for pagination.
+ * @param params.limit - The number of venues to retrieve per page.
  *
  * @returns An object containing:
  * - `venues`: A list of venues (empty if none found).
