@@ -1,22 +1,27 @@
 import { useState } from "react";
+import { useAuthStore } from "@/store/authStore";
 import { useCreateBooking } from "@/hooks/bookings/useCreateBooking";
 import { useModal } from "@/hooks/ui/useModal";
 import { Venue } from "@/types/venue";
 import { Booking } from "@/types/booking";
 import { BookingFormData } from "@/schemas/bookingSchema";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
+import { filterUpcomingBookings } from "@/utils/bookings/filterBookings";
+import { sortBookingsByDate } from "@/utils/bookings/sortBookings";
 
 import Gallery from "@/components/venues/Gallery";
 import Rating from "@/components/venues/Rating";
 import Amenities from "@/components/venues/Amenities";
 import Owner from "@/components/venues/Owner";
 import Map from "@/components/venues/Map";
+import Actions from "@/components/venues/Actions";
 import BookingForm from "@/components/forms/BookingForm";
 import SuccessModal from "@/components/modals/SuccessModal";
+import BookingsModal from "@/components/modals/BookingsModal";
 
 /**
- * SingleVenue component that displays detailed information about a single venue.
- * Handles the creation of a new booking and manages the booking success modal.
+ * SingleVenue component that displays venue details and allows booking for non-owners.
+ * Owners can manage their venue, including viewing bookings and other actions.
  *
  * @component
  * @param props - The properties passed to the component.
@@ -28,10 +33,16 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
   const { id, name, description, media, price, maxGuests } = venue;
   const { rating, meta, location, owner, bookings } = venue;
 
+  const user = useAuthStore((state) => state.user);
+  const isOwner = user?.name === owner?.name;
+
   const [newBooking, setNewBooking] = useState<Booking | null>(null);
+  const [venueForBookings, setVenueForBookings] = useState<Venue | null>(null);
+
+  const successModal = useModal();
+  const bookingsModal = useModal();
 
   const { createBooking, isPending, error } = useCreateBooking();
-  const { modalOpen, openModal, closeModal } = useModal();
 
   /**
    * Creates a new booking, resets the form, and opens the success modal.
@@ -44,9 +55,20 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
       onSuccess: ({ data: booking }) => {
         resetCallback();
         setNewBooking({ ...booking, venue });
-        openModal();
+        successModal.openModal();
       },
     });
+  };
+
+  /**
+   * Handles viewing the bookings for the venue.
+   * Filters and sorts the upcoming bookings, then sets the venue state for the modal.
+   */
+  const handleViewBookings = () => {
+    const upcomingBookings = filterUpcomingBookings(bookings || []);
+    const sortedBookings = sortBookingsByDate(upcomingBookings);
+    setVenueForBookings({ ...venue, bookings: sortedBookings });
+    bookingsModal.openModal();
   };
 
   return (
@@ -81,19 +103,34 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
 
         <div className="space-y-6">
           {owner && <Owner owner={owner} />}
-          <BookingForm
-            onSubmit={handleAddBooking}
-            venueId={id}
-            isPending={isPending}
-            error={error}
-            bookings={bookings || []}
-            price={price}
-            maxGuests={maxGuests}
-          />
+
+          {isOwner ? (
+            <Actions venue={venue} onViewBookings={handleViewBookings} />
+          ) : (
+            <BookingForm
+              onSubmit={handleAddBooking}
+              venueId={id}
+              isPending={isPending}
+              error={error}
+              bookings={bookings || []}
+              price={price}
+              maxGuests={maxGuests}
+            />
+          )}
         </div>
       </div>
 
-      <SuccessModal modalOpen={modalOpen} closeModal={closeModal} booking={newBooking} />
+      <SuccessModal
+        modalOpen={successModal.modalOpen}
+        closeModal={successModal.closeModal}
+        booking={newBooking}
+      />
+
+      <BookingsModal
+        modalOpen={bookingsModal.modalOpen}
+        closeModal={bookingsModal.closeModal}
+        venue={venueForBookings}
+      />
     </>
   );
 }

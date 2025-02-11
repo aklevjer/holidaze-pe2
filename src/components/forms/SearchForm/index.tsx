@@ -52,7 +52,7 @@ export default function SearchForm({ className, onSearch }: SearchFormProps) {
         name="search"
         id={searchId}
         placeholder="Search for venues.."
-        className="w-full rounded-l-md border-y border-l border-white bg-white p-2 text-sm text-teal-900 outline-teal-900 md:border-slate-700"
+        className="w-full rounded-l-md border-y border-l border-white bg-white p-2 text-sm text-teal-900 outline-none focus:ring-1 focus:ring-inset focus:ring-teal-900 md:border-slate-700"
       />
 
       <button

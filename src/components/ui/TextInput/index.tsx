@@ -55,8 +55,8 @@ export default function TextInput({
             {...register}
             {...rest}
             className={twMerge(
-              "w-full rounded-md border border-slate-500 p-2 text-m focus:outline-teal-900",
-              error && "border-red-700 pr-10 focus:outline-red-700",
+              "w-full rounded-md border border-slate-500 p-2 text-m outline-none focus:ring-1 focus:ring-teal-900",
+              error && "border-red-700 pr-10 focus:ring-red-700",
             )}
           />
 

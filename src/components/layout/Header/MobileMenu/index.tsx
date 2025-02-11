@@ -24,7 +24,10 @@ interface MobileMenuProps {
 export default function MobileMenu({ menuOpen, closeMenu }: MobileMenuProps) {
   return (
     <Dialog open={menuOpen} onClose={closeMenu} className="md:hidden">
-      <DialogPanel className="fixed inset-0 space-y-6 bg-teal-900 py-4 text-neutral-100">
+      <DialogPanel
+        transition
+        className="fixed inset-0 space-y-6 bg-teal-900 py-4 text-neutral-100 transition ease-in-out data-[closed]:opacity-0"
+      >
         <div className="mx-4 flex justify-between">
           <Logo />
           <MenuButton menuOpen={menuOpen} onClick={closeMenu} />

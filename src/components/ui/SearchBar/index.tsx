@@ -51,7 +51,7 @@ export default function SearchBar({ queryParam, onSearch }: SearchBarProps) {
           onChange={handleInputChange}
           value={inputValue}
           placeholder="Enter keywords.."
-          className="w-full rounded-md border border-slate-500 p-2 pl-8 text-m focus:outline-teal-900"
+          className="w-full rounded-md border border-slate-500 p-2 pl-8 text-m outline-none focus:ring-1 focus:ring-teal-900"
         />
         <BiSearchAlt2 size={18} className="absolute left-2 top-1/2 -translate-y-1/2" />
       </div>
