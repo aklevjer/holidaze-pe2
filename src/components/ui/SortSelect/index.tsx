@@ -30,7 +30,7 @@ export default function SortSelect({ onSort }: SortSelectProps) {
       <select
         id="sort"
         onChange={handleSelectChange}
-        className="w-full rounded-md border-r-8 border-r-transparent px-2 py-2.5 text-m ring-1 ring-slate-500"
+        className="w-full rounded-md border-r-8 border-r-transparent px-2 py-2.5 text-m outline-none ring-1 ring-slate-500 focus:ring-2 focus:ring-teal-900"
       >
         <option value="created_desc">Latest Added</option>
         <option value="price_asc">Price (Low to High)</option>

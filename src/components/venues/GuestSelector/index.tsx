@@ -27,7 +27,7 @@ export default function GuestSelector({ maxGuests, register }: GuestSelectorProp
         <select
           id="guests"
           {...register}
-          className="w-full rounded-md border-r-8 border-r-transparent py-2.5 pl-8 pr-2 text-m ring-1 ring-slate-500"
+          className="w-full rounded-md border-r-8 border-r-transparent py-2.5 pl-8 pr-2 text-m outline-none ring-1 ring-slate-500 focus:ring-2 focus:ring-teal-900"
         >
           {Array.from({ length: maxGuests }).map((_, index) => (
             <option key={index} value={index + 1}>

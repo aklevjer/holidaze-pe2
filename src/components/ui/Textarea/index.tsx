@@ -47,8 +47,8 @@ export default function Textarea({
           {...register}
           {...rest}
           className={twMerge(
-            "min-h-32 w-full resize-none rounded-md border border-slate-500 p-2 align-top text-m focus:outline-teal-900",
-            error && "border-red-700 pr-10 focus:outline-red-700",
+            "min-h-32 w-full resize-none rounded-md border border-slate-500 p-2 align-top text-m outline-none focus:ring-1 focus:ring-teal-900",
+            error && "border-red-700 pr-10 focus:ring-red-700",
           )}
         ></textarea>
 
