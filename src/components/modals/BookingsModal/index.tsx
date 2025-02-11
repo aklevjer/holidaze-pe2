@@ -59,6 +59,7 @@ export default function BookingsModal({ modalOpen, closeModal, venue }: Bookings
                 >
                   <Link
                     to={`/profile/${customer?.name}`}
+                    onClick={closeModal}
                     className="max-w-36 truncate hover:underline md:max-w-none"
                   >
                     {customer?.name}
