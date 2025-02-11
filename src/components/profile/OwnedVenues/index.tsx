@@ -85,7 +85,7 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
                 onViewBookings={() => handleViewBookings(venue)}
               />
             ) : (
-              <VenueCard key={venue.id} venue={venue} />
+              <VenueCard key={venue.id} venue={venue} useH2 />
             ),
           )}
         </ul>
