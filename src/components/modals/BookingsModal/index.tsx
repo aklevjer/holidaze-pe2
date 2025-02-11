@@ -12,6 +12,17 @@ interface BookingsModalProps {
   venue: Venue | null;
 }
 
+/**
+ * BookingsModal component that displays bookings for a venue a user owns.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.modalOpen - Whether the modal is currently open.
+ * @param props.closeModal - Function to close the modal when invoked.
+ * @param props.venue - The venue to display bookings for, or `null` when no data is being displayed.
+ *
+ * @returns JSX element representing the bookings modal.
+ */
 export default function BookingsModal({ modalOpen, closeModal, venue }: BookingsModalProps) {
   return (
     <Modal modalOpen={modalOpen} closeModal={closeModal} className="max-w-2xl md:px-8">

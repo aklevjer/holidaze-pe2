@@ -8,6 +8,13 @@ import Overview from "@/components/profile/Overview";
 import Tabs from "@/components/profile/Tabs";
 import Alert from "@/components/ui/Alert";
 
+/**
+ * Profile component that renders the Profile page, displaying user details and related information.
+ * Fetches profile data and adapts based on whether it's the logged-in user's or another user's profile.
+ *
+ * @component
+ * @returns JSX element representing the Profile page.
+ */
 export default function Profile() {
   const { name } = useParams();
   const user = useAuthStore((state) => state.user);

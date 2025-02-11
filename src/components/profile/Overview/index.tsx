@@ -13,22 +13,31 @@ interface OverviewProps {
   isOwner: boolean;
 }
 
+/**
+ * Overview component that displays a profile's banner, avatar, display name, and badge (if the user is a venue manager).
+ * Allows the profile owner to update their profile by opening a modal.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.profile - The profile data to display in the overview.
+ * @param props.isOwner - Whether the logged-in user is the owner of the profile.
+ *
+ * @returns JSX element representing the overview.
+ */
 export default function Overview({ profile, isOwner }: OverviewProps) {
   const { name, avatar, banner, venueManager } = profile;
   const { user, login } = useAuthStore();
   const { updateProfile, isPending, error } = useUpdateProfile(name);
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Updates the profile and refreshes the user session on success.
+   */
   const handleUpdateProfile = (profileData: ProfileFormData) => {
     updateProfile(profileData, {
-      onSuccess: () => {
+      onSuccess: (_, { avatar, banner, venueManager }) => {
         if (user) {
-          login({
-            ...user,
-            avatar: profileData.avatar,
-            banner: profileData.banner,
-            venueManager: profileData.venueManager,
-          });
+          login({ ...user, avatar, banner, venueManager });
         }
         closeModal();
       },

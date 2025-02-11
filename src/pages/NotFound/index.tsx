@@ -1,6 +1,12 @@
 import Page from "@/components/layout/Page";
 import Button from "@/components/ui/Button";
 
+/**
+ * NotFound component that renders a 404 Page Not Found with a message and a CTA button.
+ *
+ * @component
+ * @returns JSX element representing the Not Found page.
+ */
 export default function NotFound() {
   return (
     <Page

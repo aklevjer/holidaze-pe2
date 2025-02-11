@@ -1,3 +1,9 @@
+/**
+ * AboutDetails component that displays informational sections with images and text.
+ *
+ * @component
+ * @returns JSX element representing the about details.
+ */
 export default function AboutDetails() {
   return (
     <>

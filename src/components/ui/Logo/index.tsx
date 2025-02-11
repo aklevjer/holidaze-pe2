@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
+/**
+ * Logo component that displays a logo with an icon and text, with an optional dark version.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param [props.asDark] - Whether to display a dark version of the logo (optional).
+ *
+ * @returns JSX element representing the logo.
+ */
 export default function Logo({ asDark }: { asDark?: boolean }) {
   const bgColor = asDark ? "fill-teal-900" : "fill-neutral-100";
   const iconColor = asDark ? "fill-neutral-100" : "fill-teal-900";

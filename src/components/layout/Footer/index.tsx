@@ -2,6 +2,12 @@ import { NAV_LINKS, SOCIAL_LINKS } from "@/constants/links";
 import Logo from "@/components/ui/Logo";
 import NavLink from "@/components/ui/NavLink";
 
+/**
+ * Footer component that displays navigation links, social media icons, and copyright information.
+ *
+ * @component
+ * @returns JSX element representing the footer.
+ */
 export default function Footer() {
   return (
     <footer className="bg-teal-900 text-neutral-100">

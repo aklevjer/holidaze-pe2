@@ -6,6 +6,16 @@ import { VenueLocation } from "@/types/venue";
 import Skeleton from "@/components/ui/Skeleton";
 import Alert from "@/components/ui/Alert";
 
+/**
+ * Map component that displays a venue's location on a map using `React Leaflet`.
+ * If latitude and longitude are not provided, it attempts to fetch them using Nominatim.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.location - The venue's location data.
+ *
+ * @returns JSX element representing the interactive map.
+ */
 export default function Map({ location }: { location: VenueLocation }) {
   const { city, country, lat, lng } = location;
   const { geoLocation, isLoading, isError } = useVenueLocation(location);

@@ -6,6 +6,12 @@ import Page from "@/components/layout/Page";
 import Alert from "@/components/ui/Alert";
 import RegisterForm from "@/components/forms/RegisterForm";
 
+/**
+ * Register component that renders the Register page with a form to submit registration details.
+ *
+ * @component
+ * @returns JSX element representing the Register page.
+ */
 export default function Register() {
   const { registerUser, isPending: registerPending, error: registerError } = useRegisterUser();
   const { loginUser, isPending: loginPending, error: loginError } = useLoginUser();
@@ -13,6 +19,11 @@ export default function Register() {
   const isPending = registerPending || loginPending;
   const error = registerError || loginError;
 
+  /**
+   * Handles the form submission to register a user and logs them in upon successful registration.
+   *
+   * @param registerData - The data submitted from the register form.
+   */
   const handleRegister = (registerData: RegisterFormData) => {
     registerUser(registerData, {
       onSuccess: (_, { email, password }) => {

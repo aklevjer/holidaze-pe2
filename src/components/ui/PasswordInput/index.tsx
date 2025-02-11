@@ -11,6 +11,20 @@ interface PasswordInputProps {
   error?: { message?: string };
 }
 
+/**
+ * PasswordInput component that renders a password field with visibility toggle.
+ * Integrates with `react-hook-form` and optionally displays an error message.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.id - The unique ID for the password input.
+ * @param props.label - The text to display as the label for the password input.
+ * @param props.placeholder - The placeholder text to display in the input field.
+ * @param [props.register] - Optional `react-hook-form` register object to bind the password input to form state.
+ * @param [props.error] - Optional error object containing a message to display.
+ *
+ * @returns JSX element representing the password input.
+ */
 export default function PasswordInput({
   id,
   label,

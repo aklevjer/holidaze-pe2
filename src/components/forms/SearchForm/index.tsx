@@ -8,10 +8,26 @@ interface SearchFormProps {
   onSearch?: () => void;
 }
 
+/**
+ * SearchForm component that allows users to search for venues by title or description.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param [props.className] - Additional CSS classes for the form (optional).
+ * @param [props.onSearch] - Callback function triggered after a search (optional).
+ *
+ * @returns JSX element representing the search form.
+ */
 export default function SearchForm({ className, onSearch }: SearchFormProps) {
   const searchId = useId();
   const navigate = useNavigate();
 
+  /**
+   * Handles the form submission for the search form.
+   *
+   * @param e - The form submission event.
+   * @param e.target.search - The search query entered by the user in the form.
+   */
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

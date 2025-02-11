@@ -2,6 +2,9 @@ import axios from "axios";
 import { useAuthStore } from "@/store/authStore";
 import { API_BASE_URL, API_KEY } from "@/constants/api";
 
+/**
+ * Pre-configured Axios instance for API requests.
+ */
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -10,6 +13,7 @@ const apiClient = axios.create({
   },
 });
 
+// Attach auth token if user is logged in
 apiClient.interceptors.request.use((config) => {
   const { user } = useAuthStore.getState();
 
@@ -20,6 +24,7 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
+// Extract API error messages
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {

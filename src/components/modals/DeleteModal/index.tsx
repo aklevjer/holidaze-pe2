@@ -9,6 +9,19 @@ interface DeleteModalProps {
   deleteType: "booking" | "venue";
 }
 
+/**
+ * DeleteModal component that prompts the user to confirm the deletion of a booking or venue.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.modalOpen - Whether the modal is currently open.
+ * @param props.closeModal - Function to close the modal when invoked.
+ * @param props.onDelete - Callback function to perform the delete action (either for booking or venue).
+ * @param props.isPending - Whether the delete request is in progress.
+ * @param props.deleteType - The type of item being deleted, either "booking" or "venue".
+ *
+ * @returns JSX element representing the delete modal.
+ */
 export default function DeleteModal({
   modalOpen,
   closeModal,

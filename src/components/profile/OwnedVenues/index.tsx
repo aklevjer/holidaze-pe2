@@ -18,6 +18,17 @@ interface OwnedVenuesProps {
   isOwner: boolean;
 }
 
+/**
+ * OwnedVenues component that displays a list of venues owned by the user.
+ * Allows for venue management actions like viewing bookings and deleting venues.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.profileName - The name of the profile whose owned venues are displayed.
+ * @param props.isOwner - Whether the logged-in user is the owner of the profile.
+ *
+ * @returns JSX element representing the owned venues.
+ */
 export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) {
   const [venueForBookings, setVenueForBookings] = useState<Venue | null>(null);
   const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null);
@@ -26,6 +37,12 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
   const { deleteVenue, isPending } = useDeleteVenue(profileName);
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Handles viewing the bookings for a specific venue.
+   * Filters and sorts the upcoming bookings, then sets the venue state for the modal.
+   *
+   * @param venue - The venue whose bookings are to be viewed.
+   */
   const handleViewBookings = (venue: Venue) => {
     const upcomingBookings = filterUpcomingBookings(venue.bookings || []);
     const sortedBookings = sortBookingsByDate(upcomingBookings);
@@ -33,6 +50,9 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
     openModal();
   };
 
+  /**
+   * Deletes the selected venue and resets the `venueToDelete` state.
+   */
   const handleDeleteVenue = () => {
     if (venueToDelete) {
       deleteVenue(venueToDelete.id);

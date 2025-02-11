@@ -2,6 +2,15 @@ import { Link } from "react-router-dom";
 import { VenueOwner } from "@/types/venue";
 import { DEFAULT_AVATAR_IMG } from "@/constants/images";
 
+/**
+ * Owner component that displays a venue's owner badge with a link to the owner's profile.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.owner - The venue's owner data.
+ *
+ * @returns JSX element representing the owner's badge.
+ */
 export default function Owner({ owner }: { owner: VenueOwner }) {
   const { name, avatar } = owner;
 

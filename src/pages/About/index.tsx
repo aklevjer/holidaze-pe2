@@ -1,6 +1,12 @@
 import Page from "@/components/layout/Page";
 import AboutDetails from "@/components/sections/AboutDetails";
 
+/**
+ * About component that renders the About Us page, including details about Holidaze.
+ *
+ * @component
+ * @returns JSX element representing the About Us page.
+ */
 export default function About() {
   return (
     <Page

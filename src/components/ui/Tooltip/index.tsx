@@ -1,5 +1,14 @@
 import { BiSolidHelpCircle } from "react-icons/bi";
 
+/**
+ * Tooltip component that displays a help icon. On hover, shows a tooltip with the provided text.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.text - The text to display inside the tooltip.
+ *
+ * @returns JSX element representing the tooltip.
+ */
 export default function Tooltip({ text }: { text: string }) {
   return (
     <div className="group relative">

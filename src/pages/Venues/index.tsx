@@ -10,6 +10,12 @@ import VenueCard from "@/components/venues/VenueCard";
 import Pagination from "@/components/ui/Pagination";
 import Alert from "@/components/ui/Alert";
 
+/**
+ * Venues component that renders the Venues page with search, sort, and pagination functionality.
+ *
+ * @component
+ * @returns JSX element representing the Venues page.
+ */
 export default function Venues() {
   const [searchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,17 +31,34 @@ export default function Venues() {
     limit: 16,
   });
 
+  /**
+   * Handles the search query change and updates the search results.
+   * Resets the current page to 1 when a new search is initiated.
+   *
+   * @param query - The search query entered by the user.
+   */
   const handleSearch = (query: string) => {
     setSearchQuery(query.trim() ? query : "");
     setCurrentPage(1);
   };
 
+  /**
+   * Handles the sorting option change and updates the venues list.
+   * Resets the current page to 1 when sorting criteria are changed.
+   *
+   * @param sortValue - The selected sorting option, including field and order (i.e. "created_desc").
+   */
   const handleSort = (sortValue: string) => {
     const [sort, sortOrder] = sortValue.split("_");
     setSortOption({ sort: sort, order: sortOrder });
     setCurrentPage(1);
   };
 
+  /**
+   * Handles page navigation and scrolls to the top of the page when a new page is selected.
+   *
+   * @param page - The page number to navigate to.
+   */
   const handlePagination = (page: number) => {
     window.scrollTo({ top: window.scrollY * 0.3, behavior: "instant" });
     window.scrollTo({ top: 0, behavior: "smooth" });

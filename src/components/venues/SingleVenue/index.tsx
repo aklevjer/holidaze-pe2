@@ -14,6 +14,16 @@ import Map from "@/components/venues/Map";
 import BookingForm from "@/components/forms/BookingForm";
 import SuccessModal from "@/components/modals/SuccessModal";
 
+/**
+ * SingleVenue component that displays detailed information about a single venue.
+ * Handles the creation of a new booking and manages the booking success modal.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venue - The venue data to display.
+ *
+ * @returns JSX element representing the single venue.
+ */
 export default function SingleVenue({ venue }: { venue: Venue }) {
   const { id, name, description, media, price, maxGuests } = venue;
   const { rating, meta, location, owner, bookings } = venue;
@@ -23,6 +33,12 @@ export default function SingleVenue({ venue }: { venue: Venue }) {
   const { createBooking, isPending, error } = useCreateBooking();
   const { modalOpen, openModal, closeModal } = useModal();
 
+  /**
+   * Creates a new booking, resets the form, and opens the success modal.
+   *
+   * @param bookingData - The booking details submitted by the user.
+   * @param resetCallback - Callback function to reset the booking form after success.
+   */
   const handleAddBooking = (bookingData: BookingFormData, resetCallback: () => void) => {
     createBooking(bookingData, {
       onSuccess: ({ data: booking }) => {

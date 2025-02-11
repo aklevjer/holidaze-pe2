@@ -1,5 +1,12 @@
 import Skeleton from "@/components/ui/Skeleton";
 
+/**
+ * BookingsSkeleton component that displays a loading skeleton for the bookings table.
+ * Includes placeholders for table headers and booking entries.
+ *
+ * @component
+ * @returns JSX element representing the bookings skeleton.
+ */
 export default function BookingsSkeleton() {
   return (
     <div className="space-y-2">

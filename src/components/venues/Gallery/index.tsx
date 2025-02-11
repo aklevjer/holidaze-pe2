@@ -3,11 +3,25 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { Media } from "@/types/media";
 import { DEFAULT_VENUE_IMG } from "@/constants/images";
 
+/**
+ * Gallery component that renders an interactive image carousel.
+ * Users can navigate through images using arrow buttons or swipe gestures.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.images - List of images to display in the gallery.
+ *
+ * @returns JSX element representing the gallery.
+ */
 export default function Gallery({ images }: { images: Media[] }) {
   const sliderRef = useRef<HTMLUListElement | null>(null);
   const [currentPos, setCurrentPos] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
 
+  /**
+   * Moves to the previous slide in the gallery.
+   * Loops back to the last image if at the first slide.
+   */
   const handlePrevSlide = () => {
     setIsDragging(false);
     setCurrentPos((prevPos) => {
@@ -18,6 +32,10 @@ export default function Gallery({ images }: { images: Media[] }) {
     });
   };
 
+  /**
+   * Moves to the next slide in the gallery.
+   * Loops back to the first image if at the last slide.
+   */
   const handleNextSlide = () => {
     setIsDragging(false);
     setCurrentPos((prevPos) => {
@@ -28,6 +46,10 @@ export default function Gallery({ images }: { images: Media[] }) {
     });
   };
 
+  /**
+   * Updates the current slide position based on scroll position.
+   * Only updates if the user is actively dragging.
+   */
   const handleScroll = () => {
     if (!isDragging) return;
 
@@ -40,6 +62,9 @@ export default function Gallery({ images }: { images: Media[] }) {
     }
   };
 
+  /**
+   * Sets dragging state to true on touch move.
+   */
   const handleTouchMove = () => {
     setIsDragging(true);
   };

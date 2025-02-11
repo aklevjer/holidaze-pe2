@@ -1,3 +1,9 @@
+/**
+ * Generates an array representing the rating stars (solid, half, empty).
+ *
+ * @param rating - The rating value.
+ * @returns An array of star types (`'solid'`, `'half'`, or `'empty'`).
+ */
 export const getRatingStars = (rating: number) => {
   const totalStars = 5;
   const solidStars = Math.floor(rating);

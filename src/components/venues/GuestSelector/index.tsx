@@ -6,6 +6,16 @@ interface GuestSelectorProps {
   register?: UseFormRegisterReturn;
 }
 
+/**
+ * GuestSelector component that allows users to select the number of guests from a dropdown.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.maxGuests - The maximum number of guests that can be selected.
+ * @param [props.register] - Optional `react-hook-form` register object to bind the selector to form state.
+ *
+ * @returns JSX element representing the guest selector.
+ */
 export default function GuestSelector({ maxGuests, register }: GuestSelectorProps) {
   return (
     <div className="space-y-2">

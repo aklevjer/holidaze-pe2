@@ -8,12 +8,23 @@ import Skeleton from "@/components/ui/Skeleton";
 import VenueForm from "@/components/forms/VenueForm";
 import Alert from "@/components/ui/Alert";
 
+/**
+ * EditVenue component that renders the Edit Venue page with a form to update venue details.
+ *
+ * @component
+ * @returns JSX element representing the Edit Venue page.
+ */
 export default function EditVenue() {
   const { id } = useParams();
 
   const { venue, isLoading, isError } = useVenueById(String(id));
   const { updateVenue, isPending, error } = useUpdateVenue(String(id));
 
+  /**
+   * Handles the form submission and calls the API hook to update a venue.
+   *
+   * @param venueData - The data submitted from the venue form.
+   */
   const handleEditVenue = (venueData: VenueFormData) => {
     updateVenue(venueData);
   };

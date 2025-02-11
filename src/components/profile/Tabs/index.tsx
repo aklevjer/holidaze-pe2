@@ -8,6 +8,17 @@ interface TabsProps {
   isOwner: boolean;
 }
 
+/**
+ * Tabs component that displays different tabs for managing a user's profile, such as venues and bookings.
+ * Displays "Venues" tab if the user is a venue manager and "Bookings" tab if the user is the owner of the profile.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.profile - The profile data to display tabs for.
+ * @param props.isOwner - Whether the logged-in user is the owner of the profile.
+ *
+ * @returns JSX element representing the tabs.
+ */
 export default function Tabs({ profile, isOwner }: TabsProps) {
   const { name, venueManager } = profile;
 

@@ -4,9 +4,20 @@ import { VenueFormData } from "@/schemas/venueSchema";
 import Page from "@/components/layout/Page";
 import VenueForm from "@/components/forms/VenueForm";
 
+/**
+ * AddVenue component that renders the Add Venue page with a form to submit venue details.
+ *
+ * @component
+ * @returns JSX element representing the Add Venue page.
+ */
 export default function AddVenue() {
   const { createVenue, isPending, error } = useCreateVenue();
 
+  /**
+   * Handles the form submission and calls the API hook to create a new venue.
+   *
+   * @param venueData - The data submitted from the venue form.
+   */
   const handleAddVenue = (venueData: VenueFormData) => {
     createVenue(venueData);
   };

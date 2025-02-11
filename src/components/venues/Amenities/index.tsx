@@ -2,6 +2,16 @@ import { BiWifi, BiCar, BiRestaurant, BiBone } from "react-icons/bi";
 import { twMerge } from "tailwind-merge";
 import { VenueMeta } from "@/types/venue";
 
+/**
+ * Amenities component that displays a list of venue amenities.
+ * Unavailable amenities are visually indicated with a strikethrough and dimmed text
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.amenities - An object containing the venue's amenities availability.
+ *
+ * @returns JSX element representing the amenities.
+ */
 export default function Amenities({ amenities }: { amenities: VenueMeta }) {
   const { wifi, parking, breakfast, pets } = amenities;
 

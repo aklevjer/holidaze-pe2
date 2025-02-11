@@ -1,3 +1,12 @@
+/**
+ * Calculates the range of page numbers to display for pagination.
+ * Ensures a maximum of 5 pages are shown, centered around the current page.
+ *
+ * @param currentPage - The current active page number.
+ * @param pageCount - The total number of pages available.
+ *
+ * @returns An array of page numbers to display.
+ */
 export const getPaginationRange = (currentPage: number, pageCount: number) => {
   const shownPages = 5;
   const pages: number[] = [];

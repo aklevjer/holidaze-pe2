@@ -16,6 +16,20 @@ interface CalendarProps {
   error?: { message?: string };
 }
 
+/**
+ * Calendar component that provides a date range picker using `react-datepicker`.
+ * It allows users to select check-in and check-out dates while ensuring unavailable dates are disabled.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.dateFrom - The selected start date.
+ * @param props.dateTo - The selected end date.
+ * @param props.onChange - Callback function triggered when the date range changes.
+ * @param props.bookings - List of existing bookings to determine unavailable dates.
+ * @param [props.error] - Optional error object containing a message to display.
+ *
+ * @returns JSX element representing the date picker calendar.
+ */
 export default function Calendar({ dateFrom, dateTo, onChange, bookings, error }: CalendarProps) {
   const sortedBookings = useMemo(() => sortBookingsByDate(bookings), [bookings]);
   const formattedBookings = useMemo(() => formatBookings(sortedBookings), [sortedBookings]);

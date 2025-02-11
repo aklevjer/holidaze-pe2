@@ -11,6 +11,17 @@ interface LatestVenuesProps {
   isError: boolean;
 }
 
+/**
+ * LatestVenues component that displays the most recent venues with loading and error handling.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venues - List of venue data to display.
+ * @param props.isLoading - Indicates if the venues are still loading.
+ * @param props.isError - Indicates if there was an error fetching the venues.
+ *
+ * @returns JSX element representing the latest venues, or error/loading state.
+ */
 export default function LatestVenues({ venues, isLoading, isError }: LatestVenuesProps) {
   return (
     <section className="container my-20">

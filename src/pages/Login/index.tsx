@@ -5,9 +5,20 @@ import Page from "@/components/layout/Page";
 import Alert from "@/components/ui/Alert";
 import LoginForm from "@/components/forms/LoginForm";
 
+/**
+ * Login component that renders the Login page with a form to submit login details.
+ *
+ * @component
+ * @returns JSX element representing the Login page.
+ */
 export default function Login() {
   const { loginUser, isPending, error } = useLoginUser();
 
+  /**
+   * Handles the form submission and calls the API hook to login the user.
+   *
+   * @param loginData - The data submitted from the login form.
+   */
   const handleLogin = (loginData: LoginFormData) => {
     loginUser(loginData);
   };

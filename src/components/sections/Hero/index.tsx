@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 
+/**
+ * Hero component that displays the homepage hero section with background image, content, and CTAs.
+ *
+ * @component
+ * @returns JSX element representing the hero section.
+ */
 export default function Hero() {
   const { user } = useAuthStore();
 

@@ -8,6 +8,16 @@ interface PaginationProps {
   onChangePage: (page: number) => void;
 }
 
+/**
+ * Pagination component that displays page navigation controls with numbered buttons for paging.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.meta - The meta data from an API response that contains pagination details.
+ * @param props.onChangePage - The function to handle page changes when a page button or navigation button is clicked.
+ *
+ * @returns JSX element representing the pagination controls.
+ */
 export default function Pagination({ meta, onChangePage }: PaginationProps) {
   const { currentPage, pageCount, previousPage, nextPage } = meta;
 
@@ -15,12 +25,18 @@ export default function Pagination({ meta, onChangePage }: PaginationProps) {
     return null;
   }
 
+  /**
+   * Navigates to the previous page if available.
+   */
   const handlePrevPage = () => {
     if (previousPage) {
       onChangePage(previousPage);
     }
   };
 
+  /**
+   * Navigates to the next page if available.
+   */
   const handleNextPage = () => {
     if (nextPage) {
       onChangePage(nextPage);

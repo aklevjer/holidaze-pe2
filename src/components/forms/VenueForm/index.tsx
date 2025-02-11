@@ -22,6 +22,19 @@ interface VenueFormProps {
   venue?: Venue;
 }
 
+/**
+ * VenueForm component that allows users to add or update a venue.
+ * Includes fields for venue details, location, amenities, and images.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.onSubmit - Function to handle form submission with venue data.
+ * @param props.isPending - Whether the add or update request is in progress.
+ * @param props.error - An error object if the add or update request fails, otherwise `null`.
+ * @param [props.venue] - Existing venue data to populate the form for updating a venue (optional).
+ *
+ * @returns JSX element representing the venue form.
+ */
 export default function VenueForm({ onSubmit, isPending, error, venue }: VenueFormProps) {
   const [imageUrl, setImageUrl] = useState("");
   const [imageUrlError, setImageUrlError] = useState("");
@@ -40,6 +53,10 @@ export default function VenueForm({ onSubmit, isPending, error, venue }: VenueFo
     name: "media",
   });
 
+  /**
+   * Validates and adds an image URL to the venue form.
+   * Resets the input field and clears errors after adding.
+   */
   const handleAddImage = async () => {
     if (fields.length >= 8) return;
 

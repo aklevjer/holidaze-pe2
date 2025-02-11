@@ -12,6 +12,18 @@ interface OwnedVenueCardProps {
   onDelete: () => void;
 }
 
+/**
+ * OwnedVenueCard component that displays details of a user's owned venue.
+ * Includes options to view bookings and a dropdown with additional actions.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venue - The venue details to display in the card.
+ * @param props.onViewBookings - Callback function to handle viewing the venue's bookings.
+ * @param props.onDelete - Callback function to handle the venue deletion.
+ *
+ * @returns JSX element representing the owned venue card.
+ */
 export default function OwnedVenueCard({ venue, onViewBookings, onDelete }: OwnedVenueCardProps) {
   const { id, name, media, price, location } = venue;
 

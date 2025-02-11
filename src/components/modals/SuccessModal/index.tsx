@@ -12,6 +12,17 @@ interface SuccessModalProps {
   booking: Booking | null;
 }
 
+/**
+ * SuccessModal component that displays a success message and booking details when a booking is completed.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.modalOpen - Whether the modal is currently open.
+ * @param props.closeModal - Function to close the modal when invoked.
+ * @param props.booking - The booking details to display in the success message, or `null` when no data is being displayed.
+ *
+ * @returns JSX element representing the success modal.
+ */
 export default function SuccessModal({ modalOpen, closeModal, booking }: SuccessModalProps) {
   return (
     <Modal modalOpen={modalOpen} closeModal={closeModal} className="max-w-md text-center md:px-8">
