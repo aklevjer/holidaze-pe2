@@ -23,17 +23,20 @@ import DeleteModal from "@/components/modals/DeleteModal";
 export default function Bookings({ profileName }: { profileName: string }) {
   const [selectedBooking, setSelectedBooking] = useState<string | null>(null);
   const { bookings, isLoading, isError } = useProfileBookings(profileName);
-  const { deleteBooking, isPending } = useDeleteBooking(profileName);
+  const { deleteBooking, isPending, error } = useDeleteBooking(profileName);
 
   const filteredBookings = filterUpcomingBookings(bookings);
 
   /**
-   * Deletes the selected booking and resets the `selectedBooking` state.
+   * Deletes the selected booking and resets the `selectedBooking` state on success.
    */
   const handleDeleteBooking = () => {
     if (selectedBooking) {
-      deleteBooking(selectedBooking);
-      setSelectedBooking(null);
+      deleteBooking(selectedBooking, {
+        onSuccess: () => {
+          setSelectedBooking(null);
+        },
+      });
     }
   };
 
@@ -112,6 +115,7 @@ export default function Bookings({ profileName }: { profileName: string }) {
         closeModal={() => setSelectedBooking(null)}
         onDelete={handleDeleteBooking}
         isPending={isPending}
+        error={error}
         deleteType="booking"
       />
     </>

@@ -6,6 +6,16 @@ interface ActionsProps {
   onViewBookings: () => void;
 }
 
+/**
+ * Actions component that displays management actions for a venue if the logged-in user is the owner.
+ *
+ * @component
+ * @param props - The properties passed to the component.
+ * @param props.venue - The venue data for which the actions are displayed.
+ * @param props.onViewBookings - Callback function to handle viewing the venue's bookings.
+ *
+ * @returns JSX element representing the actions.
+ */
 export default function Actions({ venue, onViewBookings }: ActionsProps) {
   return (
     <div className="rounded-md border border-neutral-300 p-6">

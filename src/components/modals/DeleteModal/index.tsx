@@ -1,4 +1,5 @@
 import Modal from "@/components/ui/Modal";
+import Alert from "@/components/ui/Alert";
 import Button from "@/components/ui/Button";
 
 interface DeleteModalProps {
@@ -6,6 +7,7 @@ interface DeleteModalProps {
   closeModal: () => void;
   onDelete: () => void;
   isPending: boolean;
+  error: Error | null;
   deleteType: "booking" | "venue";
 }
 
@@ -18,6 +20,7 @@ interface DeleteModalProps {
  * @param props.closeModal - Function to close the modal when invoked.
  * @param props.onDelete - Callback function to perform the delete action (either for booking or venue).
  * @param props.isPending - Whether the delete request is in progress.
+ * @param props.error - An error object if the delete request fails, otherwise `null`.
  * @param props.deleteType - The type of item being deleted, either "booking" or "venue".
  *
  * @returns JSX element representing the delete modal.
@@ -27,14 +30,20 @@ export default function DeleteModal({
   closeModal,
   onDelete,
   isPending,
+  error,
   deleteType,
 }: DeleteModalProps) {
   return (
     <Modal modalOpen={modalOpen} closeModal={closeModal} className="max-w-md md:px-6">
       <h2 className="mb-2 text-xl font-semibold capitalize">Delete {deleteType}</h2>
-      <p className="mb-4">
-        Are you sure you want to delete this {deleteType}? This action cannot be undone.
-      </p>
+
+      {error ? (
+        <Alert type="error" message={error.message} className="mb-4" />
+      ) : (
+        <p className="mb-4">
+          Are you sure you want to delete this {deleteType}? This action cannot be undone.
+        </p>
+      )}
 
       <div className="flex justify-end gap-4">
         <Button variant="secondary" onClick={closeModal}>
