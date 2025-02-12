@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAlert } from "@/hooks/ui/useAlert";
 import { NewsletterFormData, newsletterSchema } from "@/schemas/newsletterSchema";
 
 import TextInput from "@/components/ui/TextInput";
 import Button from "@/components/ui/Button";
+import Alert from "@/components/ui/Alert";
 
 /**
  * NewsletterForm component that allows users to subscribe to a newsletter with their email.
@@ -12,6 +14,7 @@ import Button from "@/components/ui/Button";
  * @returns JSX element representing the newsletter form.
  */
 export default function NewsletterForm() {
+  const { alertMessage, showAlert } = useAlert();
   const {
     register,
     handleSubmit,
@@ -22,12 +25,10 @@ export default function NewsletterForm() {
   });
 
   /**
-   * Handles form submission and resets the form after successful submission.
-   *
-   * @param newsletterData - The submitted newsletter data.
+   * Handles the form submission for the newsletter form.
    */
-  const handleNewsletter = (newsletterData: NewsletterFormData) => {
-    console.log("Newsletter form data:", newsletterData);
+  const handleNewsletter = () => {
+    showAlert("Thank you for subscribing!");
     reset();
   };
 
@@ -40,7 +41,7 @@ export default function NewsletterForm() {
 
         <form
           onSubmit={handleSubmit(handleNewsletter)}
-          className="w-full max-w-lg [&_label]:sr-only"
+          className="w-full max-w-lg space-y-4 [&_label]:sr-only"
         >
           <TextInput
             id="email"
@@ -54,6 +55,8 @@ export default function NewsletterForm() {
               Subscribe
             </Button>
           </TextInput>
+
+          {alertMessage && <Alert type="success" message={alertMessage} />}
         </form>
       </div>
     </section>

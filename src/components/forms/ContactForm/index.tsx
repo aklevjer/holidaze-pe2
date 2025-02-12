@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAlert } from "@/hooks/ui/useAlert";
 import { ContactFormData, contactSchema } from "@/schemas/contactSchema";
 
 import TextInput from "@/components/ui/TextInput";
 import Textarea from "@/components/ui/Textarea";
 import Button from "@/components/ui/Button";
+import Alert from "@/components/ui/Alert";
 
 /**
  * ContactForm component that allows users to send a message with their name, email, subject, and message.
@@ -13,6 +15,7 @@ import Button from "@/components/ui/Button";
  * @returns JSX element representing the contact form.
  */
 export default function ContactForm() {
+  const { alertMessage, showAlert } = useAlert();
   const {
     register,
     handleSubmit,
@@ -23,12 +26,10 @@ export default function ContactForm() {
   });
 
   /**
-   * Handles form submission and resets the form after successful submission.
-   *
-   * @param contactData - The submitted contact data.
+   * Handles the form submission for the contact form.
    */
-  const handleContact = (contactData: ContactFormData) => {
-    console.log("Contact form data:", contactData);
+  const handleContact = () => {
+    showAlert("Your message was sent!");
     reset();
   };
 
@@ -79,6 +80,8 @@ export default function ContactForm() {
         <Button variant="primary" type="submit" className="w-full">
           Send message
         </Button>
+
+        {alertMessage && <Alert type="success" message={alertMessage} />}
       </form>
     </section>
   );
