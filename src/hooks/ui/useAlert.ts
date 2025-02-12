@@ -8,7 +8,7 @@ import { useState } from "react";
  * - `showAlert`: Function to display an alert for a specified duration.
  */
 export const useAlert = () => {
-  const [alertMessage, setAlertMessage] = useState<null | string>(null);
+  const [alertMessage, setAlertMessage] = useState<string | null>(null);
 
   const showAlert = (message: string, duration = 3000) => {
     setAlertMessage(message);
