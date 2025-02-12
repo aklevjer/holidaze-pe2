@@ -34,7 +34,7 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
   const [venueToDelete, setVenueToDelete] = useState<Venue | null>(null);
 
   const { venues, isLoading, isError } = useProfileVenues(profileName);
-  const { deleteVenue, isPending } = useDeleteVenue(profileName);
+  const { deleteVenue, isPending, error } = useDeleteVenue(profileName);
   const { modalOpen, openModal, closeModal } = useModal();
 
   /**
@@ -51,12 +51,15 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
   };
 
   /**
-   * Deletes the selected venue and resets the `venueToDelete` state.
+   * Deletes the selected venue and resets the `venueToDelete` state on success.
    */
   const handleDeleteVenue = () => {
     if (venueToDelete) {
-      deleteVenue(venueToDelete.id);
-      setVenueToDelete(null);
+      deleteVenue(venueToDelete.id, {
+        onSuccess: () => {
+          setVenueToDelete(null);
+        },
+      });
     }
   };
 
@@ -107,6 +110,7 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
         closeModal={() => setVenueToDelete(null)}
         onDelete={handleDeleteVenue}
         isPending={isPending}
+        error={error}
         deleteType="venue"
       />
     </>
