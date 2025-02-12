@@ -1,5 +1,11 @@
+import L from "leaflet";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { BiMap } from "react-icons/bi";
+
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
 import { useVenueLocation } from "@/hooks/venues/useVenueLocation";
 import { VenueLocation } from "@/types/venue";
 
@@ -53,7 +59,17 @@ export default function Map({ location }: { location: VenueLocation }) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={[latitude, longitude]} />
+          <Marker
+            position={[latitude, longitude]}
+            icon={L.icon({
+              iconUrl: markerIcon,
+              iconRetinaUrl: markerIcon2x,
+              shadowUrl: markerShadow,
+              iconSize: [25, 41],
+              iconAnchor: [12, 41],
+              popupAnchor: [1, -34],
+            })}
+          />
         </MapContainer>
       )}
     </div>
