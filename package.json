@@ -1,7 +1,7 @@
 {
   "name": "holidaze-pe2",
   "private": true,
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "An accommodation booking site developed for Project Exam 2 at Noroff",
   "type": "module",
   "scripts": {
