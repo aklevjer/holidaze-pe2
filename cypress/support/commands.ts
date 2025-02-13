@@ -14,11 +14,13 @@ Cypress.Commands.add("login", (email: string, password: string) => {
   cy.get("button[type='submit']").contains("Login").click();
 
   cy.wait("@login");
+  cy.wait(500);
 });
 
 Cypress.Commands.add("logout", () => {
   cy.get('[aria-label="User menu"]').eq(1).click();
   cy.get("button").contains("Logout").click();
+  cy.wait(500);
 });
 
 Cypress.Commands.add("isLoggedIn", () => {
