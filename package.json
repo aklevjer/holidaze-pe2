@@ -8,6 +8,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "test": "npm run test-unit && npm run test-e2e-cli",
+    "test-unit": "vitest run",
     "test-e2e": "concurrently \"vite\" \"cypress open\"",
     "test-e2e-cli": "concurrently \"vite\" \"cypress run\"",
     "format": "prettier -w src/**/*.{ts,tsx}",
