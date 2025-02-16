@@ -7,7 +7,7 @@ interface PriceSummaryProps {
 }
 
 /**
- * PriceSummary component that displays a price breakdown for a venue booking,
+ * PriceSummary component that displays a price breakdown for a venue booking.
  *
  * @component
  * @param props - The properties passed to the component.
