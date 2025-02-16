@@ -4,7 +4,7 @@ import { VenueMeta } from "@/types/venue";
 
 /**
  * Amenities component that displays a list of venue amenities.
- * Unavailable amenities are visually indicated with a strikethrough and dimmed text
+ * Unavailable amenities are visually indicated with a strikethrough and dimmed text.
  *
  * @component
  * @param props - The properties passed to the component.

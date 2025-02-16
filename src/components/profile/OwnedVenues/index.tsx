@@ -94,7 +94,7 @@ export default function OwnedVenues({ profileName, isOwner }: OwnedVenuesProps) 
         </ul>
       )}
 
-      {venues.length === 0 && !isLoading && (
+      {venues.length === 0 && !isLoading && !isError && (
         <Alert
           type="info"
           message={
