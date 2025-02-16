@@ -106,7 +106,7 @@ export default function Bookings({ profileName }: { profileName: string }) {
         </table>
       )}
 
-      {filteredBookings.length === 0 && !isLoading && (
+      {filteredBookings.length === 0 && !isLoading && !isError && (
         <Alert type="info" message="You don't have any upcoming bookings." />
       )}
 
