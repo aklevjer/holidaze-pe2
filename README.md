@@ -2,7 +2,7 @@
 
 [![Automated Unit Testing](https://github.com/aklevjer/holidaze-pe2/actions/workflows/unit-test.yml/badge.svg)](https://github.com/aklevjer/holidaze-pe2/actions/workflows/unit-test.yml) [![Automated E2E Testing](https://github.com/aklevjer/holidaze-pe2/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/aklevjer/holidaze-pe2/actions/workflows/e2e-test.yml)
 
-![Screen shot of the accommodation site](https://sinnsykt.net/screenshots/holidaze-screen.png)
+![Screen shot of the accommodation site](https://sinnsykt.net/screenshots/holidaze-screen.jpg)
 
 An accommodation booking site where users can book and list venues.
 
@@ -56,7 +56,7 @@ VITE_USER_PASSWORD=
 **To obtain and configure the API URL and key:**
 
 1. Visit the [Noroff API documentation](https://docs.noroff.dev/docs/v2) to obtain both the API URL and key.
-2. Use the obtained API URL and key as the values for `VITE_API_BASE_URL` and `VITE_API_KEY` in the `.env` file.
+2. Use the API URL and key as the values for `VITE_API_BASE_URL` and `VITE_API_KEY` in the `.env` file.
 
 **For testing purposes:**
 
